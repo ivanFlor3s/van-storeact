@@ -4,6 +4,8 @@ import {  Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 
+
+
 function App() {
   return (
     <div className="App">
@@ -23,7 +25,10 @@ function App() {
           Learn React
         </a>
         <Container>
+          <Button variant="danger">Haceme click</Button>{' '}
           <Button variant="primary">Haceme click</Button>{' '}
+          <Button variant="secondary">Haceme click</Button>{' '}
+          <Button variant="success">Haceme click</Button>{' '}
         </Container>
       </header>
       
