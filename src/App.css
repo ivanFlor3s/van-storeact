@@ -24,6 +24,12 @@
   color: white;
 }
 
+.ojo-homero{
+  border: solid black 2px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px 1px rgba(112, 18, 18, 0.109);
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -36,3 +42,4 @@
     transform: rotate(360deg);
   }
 }
+

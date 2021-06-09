@@ -1,16 +1,34 @@
-import {  Navbar, Nav } from "react-bootstrap";
+import "./styles.css"
+import React from "react";
+import { Navbar, Nav, Container, Image } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export const NavbarComponent = () => {
   return (
     <>
-      <Navbar bg="warning" variant="dark">
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-        <Nav className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
-        </Nav>
+      <Navbar bg="danger" variant="dark">
+        <Container>
+          <Navbar.Brand href="#home">
+            <Image
+              src="/images/app-logo-temp.png"
+              roundedCircle 
+              fluid
+              className="d-inline-block align-top logo-burguer"
+              alt="logo"
+            />
+          </Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link href="#home">
+              <h4>Home</h4>
+            </Nav.Link>
+            <Nav.Link href="#features">
+              <h4>Features</h4>
+            </Nav.Link>
+            <Nav.Link href="#pricing">
+              <h4>Pricing</h4>
+            </Nav.Link>
+          </Nav>
+        </Container>
       </Navbar>
     </>
   );

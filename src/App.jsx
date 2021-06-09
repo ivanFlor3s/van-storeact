@@ -1,18 +1,20 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { Container, Alert } from "react-bootstrap";
+
 import "bootstrap/dist/css/bootstrap.min.css";
-import Button from "react-bootstrap/Button";
+import {Container, Image } from "react-bootstrap";
 import { NavbarComponent } from "./components/shared/navbar";
-import { CardComponent } from './components/index'
 
 function App() {
   return (
     <div className="App">
-      <NavbarComponent />
-
-      
-      <CardComponent/>
+    <NavbarComponent></NavbarComponent>
+    <Container>
+      <Image
+       src="https://i.pinimg.com/originals/5f/00/29/5f00290f9d34734812f314e3a8746195.jpg" alt="" className="mt-5 ojo-homero" fluid>
+        
+      </Image>
+    </Container>
+    
     </div>
   );
 }
