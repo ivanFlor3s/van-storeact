@@ -1,3 +1,5 @@
+//FIXME Borrar este componente sin que rompa todo
+
 export const CardComponent= ()=>{
     return (
         <div>

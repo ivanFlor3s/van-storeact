@@ -1,5 +1,5 @@
-import "./styles.css"
-import React from "react";
+import "./styles.css" //NOTE se esta importando con la ruta relativa
+import React from "react"; //NOTE es importante en todos los componentes importar React//TODO va ver si ya no hace falta con las ultimas actualizacion
 import { Navbar, Nav, Container, Image } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
