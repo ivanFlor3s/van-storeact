@@ -4,7 +4,7 @@ import React from "react";
 //NOTE repo del tutor https://github.com/spancavil/after-03/tree/main/public
 //TODO va ver si ya no hace falta con las ultimas actualizacion
 import { Navbar, Nav, Container, Image } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { CartWidget } from "../CartWidget"
 
 export const NavbarComponent = () => {
   return (
@@ -35,8 +35,11 @@ export const NavbarComponent = () => {
               <h4>Pricing</h4>
             </Nav.Link>
           </Nav>
+          <CartWidget></CartWidget>
         </Container>
       </Navbar>
+
+      
     </>
   );
 };

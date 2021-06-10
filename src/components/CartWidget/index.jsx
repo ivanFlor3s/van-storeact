@@ -1,1 +1,1 @@
-export { default } from './CartWidget';
+export { CartWidget } from './CartWidget';
