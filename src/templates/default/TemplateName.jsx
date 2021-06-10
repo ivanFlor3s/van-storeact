@@ -1,7 +1,7 @@
 import React from 'react';
 import './TemplateName.style.scss';
 
-const TemplateName = () => (
+export const TemplateName = () => (
   <>
     <p>TemplateName component working :D </p>
   </>
