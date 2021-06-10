@@ -1,6 +1,7 @@
-import "./styles.css" //NOTE se esta importando con la ruta relativa
-import React from "react"; 
+import "./styles.scss"; //NOTE se esta importando con la ruta relativa
+import React from "react";
 //NOTE es importante en todos los componentes importar React
+//NOTE repo del tutor https://github.com/spancavil/after-03/tree/main/public
 //TODO va ver si ya no hace falta con las ultimas actualizacion
 import { Navbar, Nav, Container, Image } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -13,11 +14,15 @@ export const NavbarComponent = () => {
           <Navbar.Brand href="#home">
             <Image
               src="/images/app-logo-temp.png"
-              roundedCircle 
+              roundedCircle
               fluid
               className="d-inline-block align-top logo-burguer"
               alt="logo"
             />
+            
+          </Navbar.Brand>
+          <Navbar.Brand href="#home">
+            <h2>Burguers Pa'l Burgo</h2>
           </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="#home">
