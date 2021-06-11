@@ -16,7 +16,6 @@ function App() {
     
     <Container className="mt-3">
       <ItemListContainer greeting="Saludos desde App.jsx">
-        
       </ItemListContainer>
     </Container>
     
