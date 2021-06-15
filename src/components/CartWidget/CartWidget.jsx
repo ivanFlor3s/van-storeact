@@ -1,11 +1,11 @@
 import React from 'react';
 import './CartWidget.style.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 export const CartWidget = () => (
   <>
-    <FontAwesomeIcon icon={faCartPlus} size="2x" className="text-white" />
+    <FontAwesomeIcon icon={faShoppingCart} size="2x" className="text-white" />
   </>
 );
 
