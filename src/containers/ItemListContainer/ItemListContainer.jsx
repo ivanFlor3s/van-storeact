@@ -5,18 +5,18 @@ import { ItemCount } from "../../components/ItemCount";
 
 
 
-export const ItemListContainer = (props) => {
+export const ItemListContainer = ({callback}) => {
   let producto1 = {
     nombre: `Triple bacon`,
     precio: 210,
     stock: 10
   }
   
-  const [productos, setProductos]=useState([producto1]);
+  const [productos]=useState([producto1]);
   
   const sumarCarrito = (cant)=>{
     console.log(`Estoy sumando ${cant} al carrito`)
-    //props.agregarCart(cant)
+    callback(cant)
   }
   
   return (

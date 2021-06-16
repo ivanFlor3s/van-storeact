@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {Container } from "react-bootstrap";
 import { NavbarComponent } from "./components/NavbarComponent";
 import { ItemListContainer} from "./containers/ItemListContainer";
+import { useState } from "react";
 
 
 
@@ -12,12 +13,19 @@ import { ItemListContainer} from "./containers/ItemListContainer";
 
 function App() {
   
+  let [cantidad, setCantidad] = useState(0)
+
+  const OnAdd = (cant)=>{
+    console.log("Agrego al carroide")
+    setCantidad(cant)
+  }
+
   return (
     <div className="">
-    <NavbarComponent ></NavbarComponent>
+    <NavbarComponent cantidad={cantidad}></NavbarComponent>
     
     <Container className="mt-3">
-      <ItemListContainer callback={1} >
+      <ItemListContainer callback={OnAdd} >
       </ItemListContainer>
     </Container>
     

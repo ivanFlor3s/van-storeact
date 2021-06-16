@@ -6,7 +6,7 @@ import React from "react";
 import { Navbar, Nav, Container, Image } from "react-bootstrap";
 import { CartWidget } from "../CartWidget"
 
-export const NavbarComponent = () => {
+export const NavbarComponent = ({cantidad}) => {
   return (
     <>
       <Navbar bg="danger" variant="dark">
@@ -35,7 +35,7 @@ export const NavbarComponent = () => {
               <h4>Pricing</h4>
             </Nav.Link>
           </Nav>
-          <CartWidget></CartWidget>
+          <CartWidget cant={cantidad} ></CartWidget>
         </Container>
       </Navbar>
 

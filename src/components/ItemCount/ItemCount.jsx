@@ -41,6 +41,8 @@ export const ItemCount = ({ prod, initial, onAdd }) => {
                       setCantidad(inputValue);
                     }
                   }}
+
+                  
                 />
                 <Button
                   variant="primary"
