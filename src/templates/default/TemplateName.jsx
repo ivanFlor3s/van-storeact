@@ -1,10 +1,12 @@
 import React from 'react';
 import './TemplateName.style.scss';
 
-export const TemplateName = () => (
-  <>
-    <p>TemplateName component working :D </p>
-  </>
-);
+export const TemplateName = () => {
 
-export default TemplateName;
+
+  return (
+    <>
+      <p>TemplateName component working :D </p>
+    </>
+  )
+};
