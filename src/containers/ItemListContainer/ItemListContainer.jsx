@@ -1,19 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ItemListContainer.style.scss";
-import { Card } from "../../components/Card";
-import { Row } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
+import { ItemCount } from "../../components/ItemCount";
 
 
-export const ItemListContainer = (props) => (
+
+export const ItemListContainer = (props) => {
+  let producto1 = {
+    nombre: `Triple bacon`,
+    precio: 210,
+    stock: 10
+  }
+  
+  const [productos, setProductos]=useState([producto1]);
+  
+  const sumarCarrito = (cant)=>{
+    console.log(`Estoy sumando ${cant} al carrito`)
+    //props.agregarCart(cant)
+  }
+  
+  return (
   <>
-  <div className = "">
-
     <Row>
-      <Card></Card>
+      <Col xs={3}>
+        <ItemCount prod={productos[0]} initial={1}  onAdd={sumarCarrito} ></ItemCount>
+      </Col>
     </Row>
-
-  </div>
   </>
-);
+  )
+};
 
 export default ItemListContainer;

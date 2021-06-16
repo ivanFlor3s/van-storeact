@@ -1,10 +1,9 @@
 import "./App.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Container, Col, Row } from "react-bootstrap";
+import {Container } from "react-bootstrap";
 import { NavbarComponent } from "./components/NavbarComponent";
 import { ItemListContainer} from "./containers/ItemListContainer";
-import {ItemCount} from "./components/ItemCount"
 
 
 
@@ -12,22 +11,16 @@ import {ItemCount} from "./components/ItemCount"
 //NOTE las imagenes se estan guardando en una carpeta de Images dentro de "public"
 
 function App() {
+  
   return (
     <div className="">
-    <NavbarComponent></NavbarComponent>
+    <NavbarComponent ></NavbarComponent>
     
     <Container className="mt-3">
-      <ItemListContainer greeting="Saludos desde App.jsx">
+      <ItemListContainer callback={1} >
       </ItemListContainer>
     </Container>
-    <Container>
-      <Row>
-        <Col xs= {5}>
-          <ItemCount></ItemCount>
-        
-        </Col>
-      </Row>
-    </Container>
+    
     </div>
   );
 }
