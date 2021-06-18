@@ -45,12 +45,12 @@ export const ItemList = () => {
         <Row>
           {productos.map((element, index) => {
             return (
-              <span key={index}>
+              
 
-                <Col xs={4}>
+                <Col xs={4} key={index}>
                   <Item img = {element.img} title={element.title} price={element.price} ></Item>
                 </Col>
-              </span>
+              
               
               )
             })
