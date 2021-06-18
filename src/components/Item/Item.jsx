@@ -12,7 +12,7 @@ export const Item = ({title, img, price}) => {
           <Card.Body>
             <Card.Title>{ title }</Card.Title>
             <hr />
-            <h3>Precio: {price}</h3>
+            <h3>Precio: ${price}.00</h3>
             <Card.Text>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque perspiciatis quas, corporis deleniti aperiam nesciunt exercitationem, repellendus nihil id assumenda aliquid consequatur voluptatem, harum quaerat dicta eveniet ex architecto sit.
             </Card.Text>
