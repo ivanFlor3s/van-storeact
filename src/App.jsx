@@ -1,7 +1,6 @@
 import "./App.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Container } from "react-bootstrap";
 import { NavbarComponent } from "./components/NavbarComponent";
 import { ItemListContainer} from "./containers/ItemListContainer";
 import { useState } from "react";

@@ -16,7 +16,7 @@ export const Item = ({title, img, price}) => {
             <Card.Text>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque perspiciatis quas, corporis deleniti aperiam nesciunt exercitationem, repellendus nihil id assumenda aliquid consequatur voluptatem, harum quaerat dicta eveniet ex architecto sit.
             </Card.Text>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" rel="noreferrer" target="_blank">
               <Button variant="success" > Comprar</Button>
 
             </a>
