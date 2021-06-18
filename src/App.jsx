@@ -21,13 +21,13 @@ function App() {
   }
 
   return (
-    <div className="">
+    <div >
     <NavbarComponent cantidad={cantidad}></NavbarComponent>
     
-    <Container className="mt-3">
+    
       <ItemListContainer callback={OnAdd} >
       </ItemListContainer>
-    </Container>
+    
     
     </div>
   );
