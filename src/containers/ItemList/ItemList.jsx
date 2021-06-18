@@ -43,11 +43,14 @@ export const ItemList = () => {
           
         </CardColumns> */}
         <Row>
-          {productos.map((element) => {
+          {productos.map((element, index) => {
             return (
-              <Col xs={4}>
-                <Item img = {element.img} title={element.title} price={element.price} ></Item>
-              </Col>
+              <span key={index}>
+
+                <Col xs={4}>
+                  <Item img = {element.img} title={element.title} price={element.price} ></Item>
+                </Col>
+              </span>
               
               )
             })
