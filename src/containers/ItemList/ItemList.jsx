@@ -34,13 +34,7 @@ export const ItemList = () => {
       {productos.length === 0 ? "No tengo datos para mostrar" : "Tengo datos :)"}
       <h1>Ahora vendemos zapatillas</h1>
       <Container>
-        {/* <CardColumns>
-          {productos.map((element) => {
-            return <Item img = {element.img} title={element.title} price={element.price} ></Item>
-            })
-          }
-          
-        </CardColumns> */}
+        
         <Row>
           {productos.map((element, index) => {
             return (
