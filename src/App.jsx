@@ -2,7 +2,8 @@ import "./App.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavbarComponent } from "./components/NavbarComponent";
-import { ItemListContainer} from "./containers/ItemListContainer";
+//import { ItemListContainer} from "./containers/ItemListContainer";
+import {ItemDetailContainer} from "./containers/ItemDetailContainer"
 import { useState } from "react";
 
 
@@ -24,9 +25,10 @@ function App() {
     <NavbarComponent cantidad={cantidad}></NavbarComponent>
     
     
-      <ItemListContainer callback={OnAdd} >
-      </ItemListContainer>
-    
+    {/* <ItemListContainer callback={OnAdd} >
+    </ItemListContainer>  */}
+    <ItemDetailContainer></ItemDetailContainer>
+
     
     </div>
   );
