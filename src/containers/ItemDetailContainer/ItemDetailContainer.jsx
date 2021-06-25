@@ -8,7 +8,7 @@ export const ItemDetailContainer = () => {
   const [producto, setProducto] = useState();
 
   const setData = async () => {
-    const respuesta = await getDataMLA("Hamburguesa");
+    const respuesta = await getDataMLA("Zapatillas");
 
     setTimeout(() => {
       let aux = respuesta.map((element) => {
@@ -29,17 +29,19 @@ export const ItemDetailContainer = () => {
     };
   }, []);
 
-  if (producto) {
+  {
     return (
       <>
-        <ItemDetail
-          img={producto.img}
-          title={producto.title}
-          price={producto.price}
-        ></ItemDetail>
+        {producto ? (
+          <ItemDetail
+            img={producto.img}
+            title={producto.title}
+            price={producto.price}
+          ></ItemDetail>
+        ) : (
+          <h1>No tengo producto detail para mostrar</h1>
+        )}
       </>
     );
-  } else {
-    return <h1>No tengo producto detail para mostrar</h1>;
   }
 };
