@@ -15,6 +15,7 @@ export const ItemDetail = ({ title, img, price }) => {
     stock: 15,
   };
 
+  
   return (
     <>
       <Container className="mt-3">
