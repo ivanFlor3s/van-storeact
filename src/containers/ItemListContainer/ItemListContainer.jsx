@@ -1,35 +1,39 @@
-import React, { useState } from "react";
 import "./ItemListContainer.style.scss";
 import { Row, Col } from "react-bootstrap";
 import { ItemCount } from "../../components/ItemCount";
 import { ItemList } from "../ItemList/ItemList";
+import { getDataMLA } from "../../utils/helpers";
+import { useState, useEffect } from "react";
 
 
+export const ItemListContainer = () => {
+  const [productos, setProds] = useState([]);
+  const setData = async () => {
+    const respuesta = await getDataMLA("Zapatillas");
+    //Agrego timeout para apreciar que hay una espera
+    setTimeout(() => {
+      let aux = respuesta.map((element) => {
+        return {
+          idProd: element.id,
+          img: element.thumbnail,
+          title: element.title,
+          price: element.price,
+        };
+      });
+      setProds(aux);
+    }, 1000);
+  };
 
-export const ItemListContainer = ({callback}) => {
-  let producto1 = {
-    nombre: `Triple bacon`,
-    precio: 210,
-    stock: 10
-  }
-  
-  const [productos]=useState([producto1]);
-  
-  const sumarCarrito = (cant)=>{
-    console.log(`Estoy sumando ${cant} al carrito`)
-    callback(cant)
-  }
-  
+  useEffect(() => {
+    setData();
+    return () => {
+      console.log("Me muero");
+    };
+  }, []);
+
   return (
   <>
-    <Row>
-      <Col xs={3}>
-        <ItemCount prod={productos[0]} initial={1}  onAdd={sumarCarrito} ></ItemCount>
-      </Col>
-    </Row>
-  
-    <ItemList></ItemList>
-    
+    {productos.length > 0 ?  <ItemList productosList={productos}></ItemList> : null} 
   </>
   )
 };

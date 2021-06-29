@@ -1,8 +1,9 @@
 import React from "react";
 import "./Item.style.scss";
 import { Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-export const Item = ({ title, img, price }) => {
+export const Item = ({ title, img, price, id }) => {
   return (
     <>
       <Card className="margin-card" style={{ width: "18rem" }}>
@@ -22,8 +23,9 @@ export const Item = ({ title, img, price }) => {
             rel="noreferrer"
             target="_blank"
           >
-            <Button variant="success"> Comprar</Button>
+            <Button variant="success" className="m-1"> Comprar</Button>
           </a>
+            <Button as={Link} to={`/item/${id}`} variant="warning" className="m-1"> Detalle</Button>
         </Card.Body>
       </Card>
     </>

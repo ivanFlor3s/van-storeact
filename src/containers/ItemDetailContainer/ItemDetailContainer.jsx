@@ -1,24 +1,24 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { getDataMLA } from "../../utils/helpers";
+import { getItemMLA } from "../../utils/helpers";
 import "./ItemDetailContainer.style.scss";
 import { ItemDetail } from "../../components/ItemDetail";
+import {useParams} from "react-router-dom"
 
 export const ItemDetailContainer = () => {
   const [producto, setProducto] = useState();
+  const {id} = useParams();
 
   const setData = async () => {
-    const respuesta = await getDataMLA("Zapatillas");
-
+    const respuesta = await getItemMLA(id);
     setTimeout(() => {
-      let aux = respuesta.map((element) => {
-        return {
-          img: element.thumbnail,
-          title: element.title,
-          price: element.price,
-        };
-      });
-      setProducto(aux[2]);
+      let aux = {
+        title: respuesta.title,
+        id: respuesta.id,
+        price: respuesta.price,
+        img: respuesta.thumbnail
+      }
+      setProducto(aux);
     }, 2000);
   };
 
@@ -27,9 +27,9 @@ export const ItemDetailContainer = () => {
     return () => {
       console.log("Hold the door");
     };
-  }, []);
+  }, [id]);
 
-  {
+  
     return (
       <>
         {producto ? (
@@ -43,5 +43,5 @@ export const ItemDetailContainer = () => {
         )}
       </>
     );
-  }
+  
 };
