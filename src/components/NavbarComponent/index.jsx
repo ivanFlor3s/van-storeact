@@ -4,6 +4,7 @@ import React from "react";
 //NOTE repo del tutor https://github.com/spancavil/after-03/tree/main/public
 //TODO va ver si ya no hace falta con las ultimas actualizacion
 import { Navbar, Nav, Container, Image } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { CartWidget } from "../CartWidget"
 
 export const NavbarComponent = ({cantidad}) => {
@@ -11,7 +12,7 @@ export const NavbarComponent = ({cantidad}) => {
     <>
       <Navbar bg="danger" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand as={Link} to="/">
             <Image
               src="/images/app-logo-temp.png"
               roundedCircle
@@ -21,11 +22,11 @@ export const NavbarComponent = ({cantidad}) => {
             />
             
           </Navbar.Brand>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand as={Link} to="/">
             <h2>Burguers Pa'l Burgo</h2>
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">
+            <Nav.Link as={Link} to="/">
               <h4>Home</h4>
             </Nav.Link>
             <Nav.Link href="#features">
