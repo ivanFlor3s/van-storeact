@@ -18,7 +18,7 @@ export const ItemDetail = ({ title, img, price }) => {
   
   return (
     <>
-      <Container className="mt-3">
+      <Container className="mt-3 fadeIn animated">
         <Row>
           <Col xs={6}>
             <Image src={img.replace("-I.jpg", "-O.jpg")} />

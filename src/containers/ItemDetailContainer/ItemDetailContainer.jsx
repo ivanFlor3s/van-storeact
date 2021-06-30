@@ -4,6 +4,7 @@ import { getItemMLA } from "../../utils/helpers";
 import "./ItemDetailContainer.style.scss";
 import { ItemDetail } from "../../components/ItemDetail";
 import {useParams} from "react-router-dom"
+import { LoaderBurguer } from "../../shared/LoaderBurguer/LoaderBurguer";
 
 export const ItemDetailContainer = () => {
   const [producto, setProducto] = useState();
@@ -33,14 +34,12 @@ export const ItemDetailContainer = () => {
     return (
       <>
         {producto ? (
-          <ItemDetail
+          <ItemDetail className="animated fadeIn"
             img={producto.img}
             title={producto.title}
             price={producto.price}
           ></ItemDetail>
-        ) : (
-          <h1>No tengo producto detail para mostrar</h1>
-        )}
+        ) : <LoaderBurguer></LoaderBurguer> }
       </>
     );
   

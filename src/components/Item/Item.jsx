@@ -6,8 +6,11 @@ import { Link } from "react-router-dom";
 export const Item = ({ title, img, price, id }) => {
   return (
     <>
-      <Card className="margin-card" style={{ width: "18rem" }}>
-        <Card.Img variant="top" src={img} />
+      <Card className="margin-card animated fadeIn" style={{ width: "18rem" }}>
+        <Link to={`/item/${id}`}>
+        
+          <Card.Img variant="top" src={img} />
+        </Link>
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <hr />
