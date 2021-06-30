@@ -12,12 +12,8 @@ import { Home } from "./containers/Home"
 //NOTE las imagenes se estan guardando en una carpeta de Images dentro de "public"
 
 function App() {
-  let [cantidad, setCantidad] = useState(0);
+  let [cantidad] = useState(0);
 
-  const OnAdd = (cant) => {
-    console.log("Agrego al carroide");
-    setCantidad(cant);
-  };
 
   return (
 

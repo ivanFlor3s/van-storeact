@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.style.scss";
-import {Jumbotron, Button} from "react-bootstrap"
+import { Button} from "react-bootstrap"
 
 export const Home = () => {
   return (

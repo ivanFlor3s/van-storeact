@@ -10,20 +10,21 @@ export const ItemDetailContainer = () => {
   const [producto, setProducto] = useState();
   const {id} = useParams();
 
-  const setData = async () => {
-    const respuesta = await getItemMLA(id);
-    setTimeout(() => {
-      let aux = {
-        title: respuesta.title,
-        id: respuesta.id,
-        price: respuesta.price,
-        img: respuesta.thumbnail
-      }
-      setProducto(aux);
-    }, 2000);
-  };
+  
 
   useEffect(() => {
+    const setData = async () => {
+      const respuesta = await getItemMLA(id);
+      setTimeout(() => {
+        let aux = {
+          title: respuesta.title,
+          id: respuesta.id,
+          price: respuesta.price,
+          img: respuesta.thumbnail
+        }
+        setProducto(aux);
+      }, 2000);
+    };
     setData();
     return () => {
       console.log("Hold the door");
