@@ -24,9 +24,9 @@ function App() {
     <BrowserRouter>
       <NavbarComponent cantidad={cantidad}></NavbarComponent>
       <Switch>
-        <Route exact path="/" component={ItemListContainer}></Route>
-        <Route exact path="/category/:id" component={ItemListContainer}></Route>
-        <Route exact path="/item/:id" component={ItemDetailContainer}></Route>
+        <Route exact path="/" component={Home} ></Route>
+        <Route  path="/category/:categoryId" component={ItemListContainer}></Route>
+        <Route  path="/item/:id" component={ItemDetailContainer}></Route>
         <Route path="*" component={()=> <h1>404!!!!</h1>}></Route>
       </Switch>
     </BrowserRouter>
