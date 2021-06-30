@@ -21,7 +21,7 @@ export const ItemDetail = ({ title, img, price }) => {
       <Container className="mt-3">
         <Row>
           <Col xs={6}>
-            <Image src={img} />
+            <Image src={img.replace("-I.jpg", "-O.jpg")} />
           </Col>
           <Col xs={4}>
             <Card>
