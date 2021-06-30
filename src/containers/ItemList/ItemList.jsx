@@ -5,6 +5,7 @@ import { Item } from "../../components/Item/Item";
 
 export const ItemList = ({productosList, categoria}) => {
   return (
+    
     <>
       <h1>Vendiamos hamburguesas, ahora vendemos... <strong style={{color:"blue"}}>{categoria}</strong></h1>
       <Container className="animated fadeIn">
