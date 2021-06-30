@@ -29,11 +29,11 @@ export const NavbarComponent = ({cantidad}) => {
             <Nav.Link as={Link} to="/">
               <h4>Home</h4>
             </Nav.Link>
-            <Nav.Link href="#features">
-              <h4>Features</h4>
+            <Nav.Link as={Link} to="/category/Zapatillas" >
+              <h4>Zapatillas</h4>
             </Nav.Link>
-            <Nav.Link href="#pricing">
-              <h4>Pricing</h4>
+            <Nav.Link as={Link} to="/category/Autos">
+              <h4>Autos</h4>
             </Nav.Link>
           </Nav>
           <CartWidget cant={cantidad} ></CartWidget>
