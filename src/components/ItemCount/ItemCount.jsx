@@ -8,6 +8,28 @@ import { useState } from "react";
 export const ItemCount = ({ prod, initial, onAdd }) => {
   let [cantidad, setCantidad] = useState(initial);
 
+  const agregar = ()=>{
+    if (cantidad < prod.stock) {
+      setCantidad(cantidad + 1);
+    }
+  }
+
+  const onInputChange = (e) => {
+    const inputValue = e.target.value;
+    if (inputValue > prod.stock) {
+      setCantidad(prod.stock);
+    } else if (inputValue < 0) {
+      setCantidad(1);
+    } else {
+      setCantidad(inputValue);
+    }
+  }
+  const quitar = () => {
+    if (cantidad > 1) {
+      setCantidad(cantidad - 1);
+    }
+  }
+
   return (
     <>
       <Card>
@@ -20,37 +42,20 @@ export const ItemCount = ({ prod, initial, onAdd }) => {
               <InputGroup className="mt-4 mb-3">
                 <Button
                   variant="primary"
-                  onClick={() => {
-                    if (cantidad > 1) {
-                      setCantidad(cantidad - 1);
-                    }
-                  }}
+                  onClick={quitar}
                 >
                   -
                 </Button>
                 <FormControl
                   type="number"
                   value={cantidad}
-                  onChange={(e) => {
-                    const inputValue = e.target.value;
-                    if (inputValue > prod.stock) {
-                      setCantidad(prod.stock);
-                    } else if (inputValue < 0) {
-                      setCantidad(1);
-                    } else {
-                      setCantidad(inputValue);
-                    }
-                  }}
+                  onChange={onInputChange}
 
                   
                 />
                 <Button
                   variant="primary"
-                  onClick={() => {
-                    if (cantidad < prod.stock) {
-                      setCantidad(cantidad + 1);
-                    }
-                  }}
+                  onClick={agregar}
                 >
                   +
                 </Button>
