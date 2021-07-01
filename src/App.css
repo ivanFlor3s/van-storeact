@@ -27,3 +27,6 @@
     animation-name: fadeIn;
 }
 
+.d-block{
+    width: 100%;
+}
