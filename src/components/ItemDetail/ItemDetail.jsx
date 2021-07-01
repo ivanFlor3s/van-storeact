@@ -1,19 +1,29 @@
 import React from "react";
 import "./ItemDetail.style.scss";
-import { Col, Row, Image, Container, Badge, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Col, Row, Image, Container, Badge, Card, Button } from "react-bootstrap";
 import { ItemCount } from "../ItemCount";
 import StarRatings from "react-star-ratings";
+import { useState, useEffect } from "react";
 //https://codepen.io/ekeric13/project/editor/DkJYpA Sandbox de stars cmponents
 
 export const ItemDetail = ({ title, img, price }) => {
-  const foo = (cantidad) => {
-    console.log(`Se agregaron ${cantidad} productos`);
+
+  const [cantidad, setCantidad]= useState(0)
+  const onAdd = (cant) => {
+    console.log(`Se agregaron ${cant} productos`);
+    setCantidad(cantidad + cant )
   };
 
   const productoMock = {
     nombre: title.substring(0, 21),
     stock: 15,
   };
+
+  useEffect(() => {
+    
+    
+  }, [cantidad])
 
   
   return (
@@ -54,11 +64,22 @@ export const ItemDetail = ({ title, img, price }) => {
                   ullam facere nisi animi quis ratione consequuntur, culpa, at
                   ut itaque soluta exercitationem
                 </p>
+
+                { cantidad > 0 ? 
+                <>
+                  <Link to="/cart">
+                    <Button  className="d-block animated fadeIn" variant="primary">  Terminar compra  </Button>
+                  </Link>  
+                  <Button  className="d-block mt-2 animated fadeIn" variant="secondary" onClick={()=>setCantidad(0)}>  Reset </Button>
+                </>
+
+                : 
                 <ItemCount
                   prod={productoMock}
                   initial={1}
-                  onAdd={foo}
-                ></ItemCount>
+                  onAdd={onAdd}
+                ></ItemCount>  }
+                
               </Card.Body>
             </Card>
           </Col>
