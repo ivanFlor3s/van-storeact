@@ -4,7 +4,7 @@ import React from "react";
 //NOTE repo del tutor https://github.com/spancavil/after-03/tree/main/public
 //TODO va ver si ya no hace falta con las ultimas actualizacion
 import { Navbar, Nav, Container, Image } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { CartWidget } from "../CartWidget"
 
 export const NavbarComponent = ({cantidad}) => {
@@ -12,7 +12,7 @@ export const NavbarComponent = ({cantidad}) => {
     <>
       <Navbar bg="danger" variant="dark">
         <Container>
-          <Navbar.Brand as={Link} to="/">
+          <Navbar.Brand as={Link} to="/" >
             <Image
               src="/images/app-logo-temp.png"
               roundedCircle
@@ -23,16 +23,16 @@ export const NavbarComponent = ({cantidad}) => {
             
           </Navbar.Brand>
           <Navbar.Brand as={Link} to="/">
-            <h2>Burguers Pa'l Burgo</h2>
+            <h2>Burguereacts</h2>
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">
+            <Nav.Link as={NavLink} exact={true} activeClassName="active" to="/" >
               <h4>Home</h4>
             </Nav.Link>
-            <Nav.Link as={Link} to="/category/Zapatillas" >
+            <Nav.Link as={NavLink}  activeClassName="active" to="/category/Zapatillas" >
               <h4>Zapatillas</h4>
             </Nav.Link>
-            <Nav.Link as={Link} to="/category/Autos">
+            <Nav.Link as={NavLink}  activeClassName="active" to="/category/Autos">
               <h4>Autos</h4>
             </Nav.Link>
           </Nav>

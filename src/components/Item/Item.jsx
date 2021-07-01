@@ -28,6 +28,7 @@ export const Item = ({ title, img, price, id }) => {
           >
             <Button variant="success" className="m-1"> Comprar</Button>
           </a>
+          
             <Button as={Link} to={`/item/${id}`} variant="warning" className="m-1"> Detalle</Button>
         </Card.Body>
       </Card>
