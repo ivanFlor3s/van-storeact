@@ -20,11 +20,6 @@ export const ItemDetail = ({ title, img, price }) => {
     stock: 15,
   };
 
-  useEffect(() => {
-    
-    
-  }, [cantidad])
-
   
   return (
     <>
