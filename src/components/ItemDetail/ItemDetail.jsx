@@ -4,21 +4,31 @@ import { Link } from "react-router-dom";
 import { Col, Row, Image, Container, Badge, Card, Button } from "react-bootstrap";
 import { ItemCount } from "../ItemCount";
 import StarRatings from "react-star-ratings";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 //https://codepen.io/ekeric13/project/editor/DkJYpA Sandbox de stars cmponents
 
-export const ItemDetail = ({ title, img, price }) => {
+export const ItemDetail = ({ title, img, price, stock = 15 }) => {
 
   const [cantidad, setCantidad]= useState(0)
   const onAdd = (cant) => {
     console.log(`Se agregaron ${cant} productos`);
-    setCantidad(cantidad + cant )
+    setCantidad( cant )
   };
 
-  const productoMock = {
-    nombre: title.substring(0, 21),
-    stock: 15,
-  };
+  const cartContext = useContext(CartContext)
+ 
+  const terminarCompra = ()=>{
+    const aux = {
+      item: {
+        titulo: title,
+        precio: price
+      },
+      quantity: cantidad
+    }
+    cartContext.addItem(aux)
+  }
 
   
   return (
@@ -63,14 +73,14 @@ export const ItemDetail = ({ title, img, price }) => {
                 { cantidad > 0 ? 
                 <>
                   <Link to="/cart">
-                    <Button  className="d-block animated fadeIn" variant="primary">  Terminar compra  </Button>
+                    <Button  className="d-block animated fadeIn" variant="primary"  onClick={terminarCompra} >  Terminar compra  </Button>
                   </Link>  
                   <Button  className="d-block mt-2 animated fadeIn" variant="secondary" onClick={()=>setCantidad(0)}>  Reset </Button>
                 </>
 
                 : 
                 <ItemCount
-                  prod={productoMock}
+                  prod={{nombre: title.substring(0, 21), stock: stock}}
                   initial={1}
                   onAdd={onAdd}
                 ></ItemCount>  }

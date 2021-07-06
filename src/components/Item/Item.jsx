@@ -1,9 +1,11 @@
-import React from "react";
+import { useContext } from 'react';
 import "./Item.style.scss";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 
 export const Item = ({ title, img, price, id }) => {
+  
   return (
     <>
       <Card className="margin-card animated fadeIn" style={{ width: "18rem" }}>
