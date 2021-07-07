@@ -9,7 +9,7 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 //https://codepen.io/ekeric13/project/editor/DkJYpA Sandbox de stars cmponents
 
-export const ItemDetail = ({ title, img, price, stock = 15 }) => {
+export const ItemDetail = ({ id, title, img, price, stock = 15 }) => {
 
   const [cantidad, setCantidad]= useState(0)
 
@@ -20,11 +20,13 @@ export const ItemDetail = ({ title, img, price, stock = 15 }) => {
     console.log(`Se agregaron ${cant} productos`);
     const shoppingItem = {
       item: {
+        idProduct: id,
         titulo: title,
         precio: price
       },
-      quantity: cantidad
+      quantity: cant
     }
+    console.log("shoppinItem",shoppingItem)
     cartContext.addItem(shoppingItem)
   };
 

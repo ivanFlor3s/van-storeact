@@ -36,6 +36,7 @@ export const ItemDetailContainer = () => {
       <>
         {producto ? (
           <ItemDetail className="animated fadeIn"
+            id ={producto.id}
             img={producto.img}
             title={producto.title}
             price={producto.price}
