@@ -10,13 +10,13 @@ export const CartComponentContext = ({children}) => {
     const [shoppingList, setShoppingList]= useState([])
 
     const addItem = ({item, quantity} )=> {
-        setShoppingList([{
+        setShoppingList([...shoppingList, {
             itemList: item,
-            cantidad: quantity }, ...shoppingList] )
+            cantidad: quantity }] )
     }
     
     return (
-        <CartContext.Provider value={{addItem}}>
+        <CartContext.Provider value={{addItem, shoppingList}}>
             {children}
         </CartContext.Provider>
     )

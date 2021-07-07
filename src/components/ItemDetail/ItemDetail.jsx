@@ -12,23 +12,24 @@ import { CartContext } from "../../context/CartContext";
 export const ItemDetail = ({ title, img, price, stock = 15 }) => {
 
   const [cantidad, setCantidad]= useState(0)
-  const onAdd = (cant) => {
-    console.log(`Se agregaron ${cant} productos`);
-    setCantidad( cant )
-  };
 
   const cartContext = useContext(CartContext)
- 
-  const terminarCompra = ()=>{
-    const aux = {
+
+  const onAdd = (cant) => {
+    setCantidad(cant)
+    console.log(`Se agregaron ${cant} productos`);
+    const shoppingItem = {
       item: {
         titulo: title,
         precio: price
       },
       quantity: cantidad
     }
-    cartContext.addItem(aux)
-  }
+    cartContext.addItem(shoppingItem)
+  };
+
+  
+ 
 
   
   return (
@@ -73,7 +74,7 @@ export const ItemDetail = ({ title, img, price, stock = 15 }) => {
                 { cantidad > 0 ? 
                 <>
                   <Link to="/cart">
-                    <Button  className="d-block animated fadeIn" variant="primary"  onClick={terminarCompra} >  Terminar compra  </Button>
+                    <Button  className="d-block animated fadeIn" variant="primary" >  Terminar compra  </Button>
                   </Link>  
                   <Button  className="d-block mt-2 animated fadeIn" variant="secondary" onClick={()=>setCantidad(0)}>  Reset </Button>
                 </>
