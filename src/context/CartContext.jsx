@@ -1,68 +1,74 @@
-import { useEffect } from 'react';
-import {createContext, useState} from 'react';
+import { useEffect } from "react";
+import { createContext, useState } from "react";
 
 export const CartContext = createContext();
 
 //Creo componente que despues uso en el App.jsx para "limpiar" + Separacion de funcionalidades
 
+export const CartComponentContext = ({ children }) => {
+  const [shoppingList, setShoppingList] = useState([]);
+  const [cartCounter, setCartCounter] = useState(0);
 
-export const CartComponentContext = ({children}) => {
-
-    const [shoppingList, setShoppingList]= useState([])
-    const [cartCounter, setCartCounter] = useState(0)
-
-    const isInCart= (item) =>{
-        return shoppingList.find( element => element.id === item.id)
-    }
+  const isInCart = (item) => {
     
-    const addItem = ({item, quantity} )=> {
-        
-        
-        if (isInCart(item)){
-            alert("producto ya en lista")
-            return
-        }
+    return shoppingList
+      .map((element) => element.itemList.idProduct)
+      .indexOf(item.idProduct);
+  };
 
-        setShoppingList([...shoppingList, {
-            itemList: item,
-            cantidad: quantity }] )
-        
-   
-
+  const addItem = ({ item, quantity }) => {
+    // console.log("Lista preview",shoppingList)
+    // console.log("Item que llega",item)
+    // console.log("indexOf",isInCart(item))
+    // console.log('criterio',isInCart(item) >= 0 )
+    if (isInCart(item) >= 0) {
+      shoppingList[isInCart(item)].cantidad += quantity;
+      // console.log('Agregue a art ya existente shopping list', shoppingList)
+      setShoppingList([...shoppingList]);
+    } else {
+      // console.log('Agrego nuevo item')
+      setShoppingList([
+        ...shoppingList,
+        {
+          itemList: item,
+          cantidad: quantity,
+        },
+      ]);
     }
+  };
 
-    const saveInStorage = () => {
-        localStorage.removeItem('shoppingList')
-        localStorage.setItem('shoppingList', JSON.stringify(shoppingList))
+  const saveInStorage = () => {
+    localStorage.setItem("shoppingList", JSON.stringify(shoppingList));
+  };
+
+  const getFromStorage = () => {
+    const shoppingMemory = JSON.parse(localStorage.getItem("shoppingList"));
+    if (shoppingMemory && shoppingMemory.length !== 0) {
+      setShoppingList(shoppingMemory);
     }
+  };
 
-    const getFromStorage = () =>{
-        //TODO ver este console.log
-        //console.log("Guardo en local storage")
-        const shoppingMemory = JSON.parse(localStorage.getItem('shoppingList'))
-        if( shoppingMemory &&  shoppingMemory.length !== 0 ) {
-            console.log('Traigo data de local storage')
-            
-            setShoppingList(shoppingMemory)
-        }
-    }
+  //Al montar
+  useEffect(() => {
+    getFromStorage();
+    saveInStorage();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    useEffect(() => {
+  useEffect(() => {
+    const bufferCounter = shoppingList
+      .map((element) => element.cantidad)
+      .reduce((a, b) => a + b, 0);
 
-        //getFromStorage()
+    setCartCounter(bufferCounter);
 
-        //Agrego en el counter
-        const bufferCounter = shoppingList.map(element => element.cantidad).reduce((a,b)=> a + b, 0)
-        //console.log("Agregando al cart",bufferCounter)
-        setCartCounter(bufferCounter)
+    saveInStorage();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shoppingList]);
 
-        //saveInStorage()
-        
-    }, [shoppingList])
-    
-    return (
-        <CartContext.Provider value={{addItem, shoppingList, cartCounter}}>
-            {children}
-        </CartContext.Provider>
-    )
-}
+  return (
+    <CartContext.Provider value={{ addItem, shoppingList, cartCounter }}>
+      {children}
+    </CartContext.Provider>
+  );
+};

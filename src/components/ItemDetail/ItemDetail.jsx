@@ -26,7 +26,7 @@ export const ItemDetail = ({ id, title, img, price, stock = 15 }) => {
       },
       quantity: cant
     }
-    console.log("shoppinItem",shoppingItem)
+    console.log("shoppinItem que esta enviando CHILD ",shoppingItem)
     cartContext.addItem(shoppingItem)
   };
 
