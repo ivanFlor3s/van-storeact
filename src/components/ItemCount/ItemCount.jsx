@@ -5,14 +5,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
-export const ItemCount = ({ prod, initial, onAdd }) => {
+export const ItemCount = ({ prod, initial, onAdd, inCartList = false }) => {
   let [cantidad, setCantidad] = useState(initial);
 
-  const agregar = ()=>{
+  const agregar = () => {
     if (cantidad < prod.stock) {
       setCantidad(cantidad + 1);
     }
-  }
+  };
 
   const onInputChange = (e) => {
     const inputValue = e.target.value;
@@ -23,14 +23,26 @@ export const ItemCount = ({ prod, initial, onAdd }) => {
     } else {
       setCantidad(inputValue);
     }
-  }
+  };
   const quitar = () => {
     if (cantidad > 1) {
       setCantidad(cantidad - 1);
     }
-  }
+  };
 
-  return (
+  return inCartList ? (
+    <>
+      <InputGroup className="mt-4 mb-3">
+        <Button variant="primary" onClick={quitar}>
+          -
+        </Button>
+        <FormControl type="number" value={cantidad} onChange={onInputChange} />
+        <Button variant="primary" onClick={agregar}>
+          +
+        </Button>
+      </InputGroup>
+    </>
+  ) : (
     <>
       <Card>
         <Card.Body className="ItemCount">
@@ -40,23 +52,15 @@ export const ItemCount = ({ prod, initial, onAdd }) => {
                 <h4>{prod.nombre}</h4>
               </Form.Label>
               <InputGroup className="mt-4 mb-3">
-                <Button
-                  variant="primary"
-                  onClick={quitar}
-                >
+                <Button variant="primary" onClick={quitar}>
                   -
                 </Button>
                 <FormControl
                   type="number"
                   value={cantidad}
                   onChange={onInputChange}
-
-                  
                 />
-                <Button
-                  variant="primary"
-                  onClick={agregar}
-                >
+                <Button variant="primary" onClick={agregar}>
                   +
                 </Button>
               </InputGroup>

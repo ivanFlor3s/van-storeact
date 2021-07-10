@@ -1,13 +1,34 @@
 import React from 'react';
 import './Cart.style.scss';
+import {CartItem} from '../CartItem'
+import { Container } from 'react-bootstrap';
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
 
 export const Cart = () => {
+
+  const cartContext = useContext(CartContext)
 
 
   return (
     <>
-    <h1 style={{textAlign:"center", backgroundColor: "yellow"}}>Cart Component</h1>
-      <img className="Cart" src="https://66.media.tumblr.com/22fea412b9c462934f38be15bad86989/35d1dfd7c22c8553-70/s500x750/20bab9dee14c7ed9eb3f6e026e6f969d0827083d.gif" alt="" />
+      <Container >
+        <div className="cart-list">
+
+        <h3 className="header-lista">LISTA CARRITO</h3>
+        <br />
+        { cartContext.shoppingList.map((element) => {
+          return (<div className="cart-item">
+            <CartItem ></CartItem>
+            </div>)
+        }) }
+
+
+        <button className="text-danger btn" onClick={cartContext.quitarTodo}> Borrar todo</button>
+        
+        </div>
+      </Container>
+      
     </>
     
   )

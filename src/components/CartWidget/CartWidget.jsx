@@ -6,14 +6,18 @@ import { Badge } from "react-bootstrap";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 
-
 export const CartWidget = () => {
-  
-
-  const cartContext = useContext(CartContext)
+  const cartContext = useContext(CartContext);
   return (
     <>
-      <FontAwesomeIcon icon={faShoppingCart} size="2x" className="text-white" />
+      <div className="">
+        <FontAwesomeIcon
+          icon={faShoppingCart}
+          size="2x"
+          className="text-white "
+        />
+      </div>
+     
       <Badge className="badge-counter" variant="light">
         {cartContext.cartCounter}
       </Badge>

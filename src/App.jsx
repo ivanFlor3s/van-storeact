@@ -17,7 +17,7 @@ function App() {
   return (
     <CartComponentContext>
       <BrowserRouter>
-        <NavbarComponent cantidad={ 0}></NavbarComponent>
+        <NavbarComponent cantidad={0}></NavbarComponent>
         <Switch>
           <Route exact path="/" component={Home}></Route>
           <Route

@@ -37,6 +37,9 @@ export const CartComponentContext = ({ children }) => {
     }
   };
 
+  const quitarTodo = () =>{
+    setShoppingList([])
+  }
   const saveInStorage = () => {
     localStorage.setItem("shoppingList", JSON.stringify(shoppingList));
   };
@@ -67,7 +70,7 @@ export const CartComponentContext = ({ children }) => {
   }, [shoppingList]);
 
   return (
-    <CartContext.Provider value={{ addItem, shoppingList, cartCounter }}>
+    <CartContext.Provider value={{ addItem, shoppingList, cartCounter, quitarTodo }}>
       {children}
     </CartContext.Provider>
   );
