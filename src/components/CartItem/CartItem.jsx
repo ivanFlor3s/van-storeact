@@ -5,11 +5,14 @@ import { ItemCount } from "../ItemCount";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons"
 
-export const CartItem = ( {idProducto}) => {
+
+
+export const CartItem = ( {cartProduct} ) => {
+  
   return (
     <>
       <Row className="mt-2">
-        {idProducto ? <h3>Tengo producto</h3> :<h3>No tengo nada</h3>}
+       
         <Col xs={2}>
           <img
             src="/images/burguer-mini.jpg"
@@ -17,34 +20,34 @@ export const CartItem = ( {idProducto}) => {
             alt=""
           />
         </Col>
-        <Col xs={4}>
+        <Col xs={6}>
           <Row>
-            <h3>Nombre del articulo</h3>
+            <h3>{ cartProduct.itemList.title }</h3>
           </Row>
-          <Row>
-            <Col xs={4}>Cantidad:</Col>
-            <Col xs={8}>
+          <Row >
+            <Col xs={2} style={{padding: '30px 0px'}}>Cantidad:</Col>
+            <Col xs={4}>
               <ItemCount
-                initial={1}
+              style={{padding: '20px 0px'}}
+                initial={ cartProduct.cantidad }
                 inCartList={true}
+                stock = {15}
               ></ItemCount>
             </Col>
           </Row>
         </Col>
         <Col xs={3}>
-          <h3>Precio: $1800</h3>
-          <p>Subtotal: $99999 </p>
+          <h3>Precio: ${cartProduct.itemList.price}</h3>
+          <p>Subtotal: ${cartProduct.subTotal} </p>
         </Col>
-        <Col xs={3}>
+        <Col xs={1}>
           <div className="btn text-danger">
 
             <FontAwesomeIcon  icon={faTrash}/>
             Borrar
           </div>
-
-          
-         
         </Col>
+
       </Row>
     </>
   );

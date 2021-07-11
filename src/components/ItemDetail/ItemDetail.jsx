@@ -9,7 +9,7 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 //https://codepen.io/ekeric13/project/editor/DkJYpA Sandbox de stars cmponents
 
-export const ItemDetail = ({ id, title, img, price, prod,stock = 15 }) => {
+export const ItemDetail = ({prod ,stock = 15 }) => {
 
   const [cantidad, setCantidad]= useState(0)
 
@@ -19,11 +19,7 @@ export const ItemDetail = ({ id, title, img, price, prod,stock = 15 }) => {
     setCantidad(cant)
     console.log(`Se agregaron ${cant} productos`);
     const shoppingItem = {
-      item: {
-        idProduct: id,
-        titulo: title,
-        precio: price
-      },
+      prod,
       quantity: cant
     }
     console.log("shoppinItem que esta enviando CHILD ",shoppingItem)
@@ -39,12 +35,12 @@ export const ItemDetail = ({ id, title, img, price, prod,stock = 15 }) => {
       <Container className="mt-3 fadeIn animated">
         <Row>
           <Col xs={6}>
-            <Image src={img.replace("-I.jpg", "-O.jpg")} />
+            <Image src={prod.img.replace("-I.jpg", "-O.jpg")} />
           </Col>
           <Col xs={4}>
             <Card>
               <Card.Body>
-                <h2>{title}</h2>
+                <h2>{prod.title}</h2>
                 <Row>
                   <Col xs={6}>
                     <StarRatings
@@ -59,7 +55,7 @@ export const ItemDetail = ({ id, title, img, price, prod,stock = 15 }) => {
                   <Col xs={6}>
                     <h2>
                       <Badge className="badge-success" bg="success">
-                        ${price}
+                        ${prod.price}
                       </Badge>
                     </h2>
                   </Col>
@@ -83,7 +79,7 @@ export const ItemDetail = ({ id, title, img, price, prod,stock = 15 }) => {
 
                 : 
                 <ItemCount
-                  prod={{nombre: title.substring(0, 21), stock: stock}}
+                  prod={{nombre: prod.title.substring(0, 21), stock: stock}}
                   initial={1}
                   onAdd={onAdd}
                 ></ItemCount>  }

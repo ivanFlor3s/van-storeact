@@ -17,10 +17,10 @@ export const CartWidget = () => {
           className="text-white "
         />
       </div>
-     
-      <Badge className="badge-counter" variant="light">
+     {cartContext.shoppingList.length != 0 ? <Badge className="badge-counter animated fadeIn" variant="light">
         {cartContext.cartCounter}
-      </Badge>
+      </Badge> : <div></div> }
+      
     </>
   );
 };

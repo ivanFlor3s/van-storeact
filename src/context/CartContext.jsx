@@ -12,17 +12,17 @@ export const CartComponentContext = ({ children }) => {
   const isInCart = (item) => {
     
     return shoppingList
-      .map((element) => element.itemList.idProduct)
-      .indexOf(item.idProduct);
+      .map((element) => element.itemList.id)
+      .indexOf(item.id);
   };
 
-  const addItem = ({ item, quantity }) => {
+  const addItem = ({ prod, quantity }) => {
     // console.log("Lista preview",shoppingList)
     // console.log("Item que llega",item)
     // console.log("indexOf",isInCart(item))
     // console.log('criterio',isInCart(item) >= 0 )
-    if (isInCart(item) >= 0) {
-      shoppingList[isInCart(item)].cantidad += quantity;
+    if (isInCart(prod) >= 0) {
+      shoppingList[isInCart(prod)].cantidad += quantity;
       // console.log('Agregue a art ya existente shopping list', shoppingList)
       setShoppingList([...shoppingList]);
     } else {
@@ -30,8 +30,9 @@ export const CartComponentContext = ({ children }) => {
       setShoppingList([
         ...shoppingList,
         {
-          itemList: item,
+          itemList: prod,
           cantidad: quantity,
+          subTotal: quantity * prod.price
         },
       ]);
     }
@@ -50,6 +51,11 @@ export const CartComponentContext = ({ children }) => {
       setShoppingList(shoppingMemory);
     }
   };
+
+  const getTotal = () => {
+    return shoppingList.map(element => element.subTotal).reduce((a,b) => a + b, 0)
+  }
+
 
   //Al montar
   useEffect(() => {
@@ -70,7 +76,7 @@ export const CartComponentContext = ({ children }) => {
   }, [shoppingList]);
 
   return (
-    <CartContext.Provider value={{ addItem, shoppingList, cartCounter, quitarTodo }}>
+    <CartContext.Provider value={{ addItem, shoppingList, cartCounter, quitarTodo, getTotal }}>
       {children}
     </CartContext.Provider>
   );

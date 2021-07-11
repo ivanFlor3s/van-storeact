@@ -12,8 +12,9 @@ export const ItemList = ({productosList, categoria}) => {
         <Row>
           {productosList.map((element, index) => {
             return (
-              <Col xs={4} key={index}>
+              <Col xs={4} key={index} >
                 <Item
+                  
                   producto = {element}
                 ></Item>
               </Col>

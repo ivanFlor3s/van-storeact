@@ -17,12 +17,12 @@ export const Cart = () => {
 
         <h3 className="header-lista">LISTA CARRITO</h3>
         <br />
-        { cartContext.shoppingList.map((element) => {
-          return (<div className="cart-item">
-            <CartItem ></CartItem>
+        { cartContext.shoppingList.map((element, index) => {
+          return (<div key={index} className="cart-item">
+            <CartItem  cartProduct = {element} ></CartItem>
             </div>)
         }) }
-
+        <h1>Total: ${ cartContext.getTotal() } </h1>
 
         <button className="text-danger btn" onClick={cartContext.quitarTodo}> Borrar todo</button>
         
