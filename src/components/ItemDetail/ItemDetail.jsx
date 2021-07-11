@@ -9,7 +9,7 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 //https://codepen.io/ekeric13/project/editor/DkJYpA Sandbox de stars cmponents
 
-export const ItemDetail = ({ id, title, img, price, stock = 15 }) => {
+export const ItemDetail = ({ id, title, img, price, prod,stock = 15 }) => {
 
   const [cantidad, setCantidad]= useState(0)
 
