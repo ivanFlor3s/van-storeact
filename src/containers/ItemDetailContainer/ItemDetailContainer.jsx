@@ -36,6 +36,7 @@ export const ItemDetailContainer = () => {
           img={producto.img}
           title={producto.title}
           price={producto.price}
+          prod = {producto}
         ></ItemDetail>
       ) : (
         <LoaderBurguer></LoaderBurguer>

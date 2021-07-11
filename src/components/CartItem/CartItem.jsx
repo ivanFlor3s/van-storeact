@@ -5,10 +5,11 @@ import { ItemCount } from "../ItemCount";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons"
 
-export const CartItem = () => {
+export const CartItem = ( {idProducto}) => {
   return (
     <>
       <Row className="mt-2">
+        {idProducto ? <h3>Tengo producto</h3> :<h3>No tengo nada</h3>}
         <Col xs={2}>
           <img
             src="/images/burguer-mini.jpg"
@@ -24,7 +25,6 @@ export const CartItem = () => {
             <Col xs={4}>Cantidad:</Col>
             <Col xs={8}>
               <ItemCount
-                prod={{ nombre: "Remera", stock: 12 }}
                 initial={1}
                 inCartList={true}
               ></ItemCount>

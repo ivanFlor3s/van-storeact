@@ -1,46 +1,29 @@
 import "./ItemListContainer.style.scss";
 import { ItemList } from "../ItemList/ItemList";
-import { getDataMLA } from "../../utils/helpers";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { LoaderBurguer } from "../../shared/LoaderBurguer/LoaderBurguer";
+import { useContext } from "react";
+import { ProductContext } from "../../context/ProductsContext";
 
 
 export const ItemListContainer = () => {
   const [productos, setProds] = useState([]);
   const {categoryId}= useParams()
 
+  const productContext = useContext(ProductContext)
   
 
   useEffect(() => {
-    const setData = async () => {
-      const respuesta = await getDataMLA(categoryId);
-      //Agrego timeout para apreciar que hay una espera
-      setTimeout(() => {
-        let aux = respuesta.map((element) => {
-          return {
-            idProd: element.id,
-            img: element.thumbnail,
-            title: element.title,
-            price: element.price,
-          };
-        });
-        setProds(aux);
-      }, 2000);
-    };
-    setProds([])
-    setData();
-    return () => {
-      console.log("Me muero");
-    };
-  }, [categoryId]);
+    setProds(productContext.getProductos(categoryId))
+  }, [categoryId, productos]);
 
   return (
   <>
-     {productos.length > 0 ?  <ItemList productosList={productos} categoria={categoryId}></ItemList> : 
-      <LoaderBurguer></LoaderBurguer> }
-    
-    
+     {productos.length > 0 ?  
+     <ItemList productosList={productos} categoria={categoryId}></ItemList> 
+     : 
+    <LoaderBurguer></LoaderBurguer> }
   </>
   )
 };

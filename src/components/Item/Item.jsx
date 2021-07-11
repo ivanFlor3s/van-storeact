@@ -2,21 +2,28 @@
 import "./Item.style.scss";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import {  useEffect } from "react";
+
+export const Item = ({ producto}) => {
 
 
-export const Item = ({ title, img, price, id }) => {
   
+  // useEffect(() => {
+  //   const prod = productosList.find( element => element.idProducto === id)
+  //   setProducto(prod)
+  // }, [])
+
   return (
     <>
       <Card className="margin-card animated fadeIn" style={{ width: "18rem" }}>
-        <Link to={`/item/${id}`}>
+        <Link to={`/item/${producto.idProd}`}>
         
-          <Card.Img variant="top" src={img} />
+          <Card.Img variant="top" src={producto.img} />
         </Link>
         <Card.Body>
-          <Card.Title>{title}</Card.Title>
+          <Card.Title>{producto.title}</Card.Title>
           <hr />
-          <h3>Precio: ${price}.00</h3>
+          <h3>Precio: ${producto.price}.00</h3>
           
           <a
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
@@ -26,7 +33,7 @@ export const Item = ({ title, img, price, id }) => {
             <Button variant="success" className="m-1"> Comprar</Button>
           </a>
           
-            <Button as={Link} to={`/item/${id}`} variant="warning" className="m-1"> Detalle</Button>
+            <Button as={Link} to={`/item/${producto.idProd}`} variant="warning" className="m-1"> Detalle</Button>
         </Card.Body>
       </Card>
     </>

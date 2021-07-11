@@ -7,18 +7,14 @@ export const ItemList = ({productosList, categoria}) => {
   return (
     
     <>
-      <h1>Vendiamos hamburguesas, ahora vendemos... <strong style={{color:"blue"}}>{categoria}</strong></h1>
+      <h1 style= {{marginTop: '20px', textAlign: 'center'}} >Vendiamos hamburguesas, ahora vendemos... <strong style={{background: "yellow", padding: '10px', borderRadius:'10px'}}>{categoria}</strong></h1>
       <Container className="animated fadeIn">
         <Row>
           {productosList.map((element, index) => {
             return (
               <Col xs={4} key={index}>
                 <Item
-               
-                  img={element.img}
-                  title={element.title}
-                  price={element.price}
-                  id = {element.idProd}
+                  producto = {element}
                 ></Item>
               </Col>
             );
