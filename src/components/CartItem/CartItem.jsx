@@ -7,8 +7,13 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons"
 
 
 
-export const CartItem = ( {cartProduct} ) => {
+export const CartItem = ( {cartProduct, onQuitar} ) => {
   
+
+  const remove = () => {
+    onQuitar(cartProduct.itemList.id)
+  }
+
   return (
     <>
       <Row className="mt-2">
@@ -41,7 +46,7 @@ export const CartItem = ( {cartProduct} ) => {
           <p>Subtotal: ${cartProduct.subTotal} </p>
         </Col>
         <Col xs={1}>
-          <div className="btn text-danger">
+          <div className="btn text-danger" onClick={remove} >
 
             <FontAwesomeIcon  icon={faTrash}/>
             Borrar

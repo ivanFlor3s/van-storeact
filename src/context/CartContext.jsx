@@ -38,6 +38,16 @@ export const CartComponentContext = ({ children }) => {
     }
   };
 
+
+  const quitarItem = (id) => {
+    var array = [...shoppingList]
+    var index = array.findIndex(element => element.itemList.id == id)
+    if (index !== -1) {
+      array.splice(index, 1)
+      setShoppingList([...array])
+    }
+  }
+
   const quitarTodo = () =>{
     setShoppingList([])
   }
@@ -76,7 +86,7 @@ export const CartComponentContext = ({ children }) => {
   }, [shoppingList]);
 
   return (
-    <CartContext.Provider value={{ addItem, shoppingList, cartCounter, quitarTodo, getTotal }}>
+    <CartContext.Provider value={{ addItem, shoppingList, cartCounter, quitarTodo, getTotal, quitarItem }}>
       {children}
     </CartContext.Provider>
   );
