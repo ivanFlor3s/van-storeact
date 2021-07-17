@@ -1,50 +1,40 @@
 import { useEffect } from "react";
 import { createContext, useState } from "react";
-import { getDataMLA } from "../utils/helpers";
+import { getFirebaseCollection } from "../utils/helpers";
 
 export const ProductContext = createContext();
 
 export const ProductContextComponent = ({ children }) => {
-  const [zapatillas, setZapatillas] = useState([]);
-  const [autos, setAutos] = useState([]);
+  const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    const setData = async (categoria) => {
-      const respuesta = await getDataMLA(categoria);
-      //Agrego timeout para apreciar que hay una espera
+    
+      // GET CON THEN --------------------------------------------
+      // const DB = getFirestore()
+      // const COLLECTION = DB.collection("productos")
 
-      let aux = respuesta.map((element) => {
-        return {
-          category: categoria,
-          idProd: element.id,
-          img: element.thumbnail,
-          title: element.title,
-          price: element.price,
-        };
-      });
+      // COLLECTION.get().then(response => {
+      //   console.log(response.size)
+      //   console.log(response.docs.map( element => element.data()))
 
-      if (categoria === 'Zapatillas') {
-        setZapatillas(aux)
-      } else if (categoria === 'Autos'){
-        setAutos(aux)
+      // })
+
+
+      const initProductos = async () => {
+
+        const PRODS = await getFirebaseCollection("productos")
+        setProductos(PRODS)
       } 
-    };
-
-    setData("Autos");
-    setData("Zapatillas");
+      initProductos()
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const getProductos = (categoria) => {
-      if (categoria === 'Zapatillas'){
-          return zapatillas
-      }
-      if (categoria === 'Autos') {
-          return autos
-      }
-  }
+  
 
   return (
-    <ProductContext.Provider value={{autos, zapatillas, getProductos}}>{children}</ProductContext.Provider>
+    <ProductContext.Provider value={{productos}}>
+     {children}
+    </ProductContext.Provider>
   );
 };

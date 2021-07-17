@@ -1,8 +1,5 @@
-import "./styles.scss"; //NOTE se esta importando con la ruta relativa
+import "./styles.scss"; 
 import React from "react";
-//NOTE es importante en todos los componentes importar React
-//NOTE repo del tutor https://github.com/spancavil/after-03/tree/main/public
-//TODO va ver si ya no hace falta con las ultimas actualizacion
 import { Navbar, Nav, Container, Image, Button } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import { CartWidget } from "../CartWidget";
@@ -57,7 +54,7 @@ export const NavbarComponent = ({ cantidad }) => {
 
   return (
     <>
-      <Navbar bg="danger" variant="dark">
+      <Navbar variant="dark">
         <Container>
           <Navbar.Brand as={Link} to="/">
             <Image

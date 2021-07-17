@@ -1,20 +1,32 @@
 import React from "react";
 import "./Home.style.scss";
-import { Button} from "react-bootstrap"
+import { Button, Image } from "react-bootstrap";
 
 export const Home = () => {
   return (
     <>
-      <div className="jumbotron animated fadeIn">
-        <h1>Hello, Home!</h1>
+    <div className="container-landing">
+      <div className=" animated fadeIn home-title">
+      <h1>En Burguereacts</h1>
+      {/* TODO random country */}
         <p>
-          This is a simple hero unit, a simple jumbotron-style component for
-          calling extra attention to featured content or information.
+         Nuestra carne esta hecha de las mas finas vacas de <strong>Indonesia</strong>
         </p>
-        <p>
-          <Button variant="primary">Learn more</Button>
-        </p>
+        
       </div>
+      <Image
+        src="/images/hamburguerLanding.jpeg"
+        alt="landing-burguer"
+        fluid
+        style={{ zIndex: "-10px" }}
+      />
+
+      <div>
+        <h1>Nuevos</h1>
+        <h1>Mejor valorados</h1>
+      </div>
+
+    </div>
     </>
   );
 };

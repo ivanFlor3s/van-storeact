@@ -18,15 +18,15 @@ function App() {
     <CartComponentContext>
       <ProductContextComponent>
         <BrowserRouter>
-          <NavbarComponent cantidad={0}></NavbarComponent>
+          <NavbarComponent ></NavbarComponent>
           <Switch>
             <Route exact path="/" component={Home}></Route>
-            <Route
+            {/* <Route
               path="/category/:categoryId"
               component={ItemListContainer}
             ></Route>
             <Route path="/item/:id" component={ItemDetailContainer}></Route>
-            <Route path="/cart" component={Cart}></Route>
+            <Route path="/cart" component={Cart}></Route> */}
             <Route path="*" component={() => <h1>404!!!!</h1>}></Route>
           </Switch>
         </BrowserRouter>
