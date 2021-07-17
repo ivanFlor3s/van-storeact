@@ -54,7 +54,7 @@ export const NavbarComponent = ({ cantidad }) => {
 
   return (
     <>
-      <Navbar variant="dark">
+      <Navbar variant="dark" className="navbar-custom">
         <Container>
           <Navbar.Brand as={Link} to="/">
             <Image

@@ -36,10 +36,29 @@ export const ProductContextComponent = ({ children }) => {
   const getProductoById = (id) => {
     return productos.find(element => element.id === id)
   }
+  const getProductosByCategory = (category)=>{
+    if(category === 'All'){
+      return productos
+    }
+    return productos.filter(element => element.categoria === category)
+  }
+
+  const getCategorias = () => {
+    const categorias = productos.map(element => element.categoria)
+    const categoriasClean = []
+    categoriasClean.push('All')
+    categorias.forEach(element => {
+      if (!categoriasClean.includes(element)){
+        categoriasClean.push(element)
+      }
+    });
+    
+    return categoriasClean;
+  }
   
 
   return (
-    <ProductContext.Provider value={{productos, getProductoById}}>
+    <ProductContext.Provider value={{productos, getProductoById, getProductosByCategory, getCategorias}}>
      {children}
     </ProductContext.Provider>
   );

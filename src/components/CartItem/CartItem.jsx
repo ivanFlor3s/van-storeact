@@ -1,6 +1,6 @@
 import React from "react";
 import "./CartItem.style.scss";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Image } from "react-bootstrap";
 import { ItemCount } from "../ItemCount";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons"
@@ -18,14 +18,15 @@ export const CartItem = ( {cartProduct, onQuitar} ) => {
     <>
       <Row className="mt-2">
        
-        <Col xs={2}>
-          <img
-            src="/images/burguer-mini.jpg"
+        <Col xs={3}>
+          <Image
+            src={cartProduct.itemList.image}
             className="cart-list-img" 
-            alt=""
+            alt={cartProduct.itemList.title}
+            fluid
           />
         </Col>
-        <Col xs={6}>
+        <Col xs={5}>
           <Row>
             <h3>{ cartProduct.itemList.title }</h3>
           </Row>
