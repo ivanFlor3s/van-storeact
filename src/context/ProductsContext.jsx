@@ -7,6 +7,9 @@ export const ProductContext = createContext();
 export const ProductContextComponent = ({ children }) => {
   const [productos, setProductos] = useState([]);
 
+
+  
+
   useEffect(() => {
     
       // GET CON THEN --------------------------------------------
@@ -30,10 +33,13 @@ export const ProductContextComponent = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const getProductoById = (id) => {
+    return productos.find(element => element.id === id)
+  }
   
 
   return (
-    <ProductContext.Provider value={{productos}}>
+    <ProductContext.Provider value={{productos, getProductoById}}>
      {children}
     </ProductContext.Provider>
   );

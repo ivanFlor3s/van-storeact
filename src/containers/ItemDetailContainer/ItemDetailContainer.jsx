@@ -5,25 +5,19 @@ import "./ItemDetailContainer.style.scss";
 import { ItemDetail } from "../../components/ItemDetail";
 import { useParams } from "react-router-dom";
 import { LoaderBurguer } from "../../shared/LoaderBurguer/LoaderBurguer";
+import { useContext } from "react";
+import { ProductContext } from "../../context/ProductsContext";
 
 export const ItemDetailContainer = () => {
   const [producto, setProducto] = useState();
   const { id } = useParams();
 
+  const productContext = useContext(ProductContext)
+
   useEffect(() => {
-    const setData = async () => {
-      const respuesta = await getItemMLA(id);
-      setTimeout(() => {
-        let aux = {
-          title: respuesta.title,
-          id: respuesta.id,
-          price: respuesta.price,
-          img: respuesta.thumbnail,
-        };
-        setProducto(aux);
-      }, 2000);
-    };
-    setData();
+    
+
+   setProducto(productContext.getProductoById(id))
     
   }, [id]);
 
@@ -32,10 +26,6 @@ export const ItemDetailContainer = () => {
       {producto ? (
         <ItemDetail
           className="animated fadeIn"
-          id={producto.id}
-          img={producto.img}
-          title={producto.title}
-          price={producto.price}
           prod = {producto}
         ></ItemDetail>
       ) : (

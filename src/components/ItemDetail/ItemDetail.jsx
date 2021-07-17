@@ -1,7 +1,15 @@
 import React from "react";
 import "./ItemDetail.style.scss";
 import { Link } from "react-router-dom";
-import { Col, Row, Image, Container, Badge, Card, Button } from "react-bootstrap";
+import {
+  Col,
+  Row,
+  Image,
+  Container,
+  Badge,
+  Card,
+  Button,
+} from "react-bootstrap";
 import { ItemCount } from "../ItemCount";
 import StarRatings from "react-star-ratings";
 import { useState } from "react";
@@ -9,33 +17,28 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 //https://codepen.io/ekeric13/project/editor/DkJYpA Sandbox de stars cmponents
 
-export const ItemDetail = ({prod ,stock = 15 }) => {
+export const ItemDetail = ({ prod }) => {
+  const [cantidad, setCantidad] = useState(0);
 
-  const [cantidad, setCantidad]= useState(0)
-
-  const cartContext = useContext(CartContext)
+  const cartContext = useContext(CartContext);
 
   const onAdd = (cant) => {
-    setCantidad(cant)
+    setCantidad(cant);
     console.log(`Se agregaron ${cant} productos`);
     const shoppingItem = {
       prod,
-      quantity: cant
-    }
-    console.log("shoppinItem que esta enviando CHILD ",shoppingItem)
-    cartContext.addItem(shoppingItem)
+      quantity: cant,
+    };
+    console.log("shoppinItem que esta enviando CHILD ", shoppingItem);
+    cartContext.addItem(shoppingItem);
   };
 
-  
- 
-
-  
   return (
     <>
       <Container className="mt-3 fadeIn animated">
         <Row>
           <Col xs={6}>
-            <Image src={prod.img.replace("-I.jpg", "-O.jpg")} />
+            <Image src={prod.image} fluid />
           </Col>
           <Col xs={4}>
             <Card>
@@ -69,23 +72,71 @@ export const ItemDetail = ({prod ,stock = 15 }) => {
                   ut itaque soluta exercitationem
                 </p>
 
-                { cantidad > 0 ? 
-                <>
-                  <Link to="/cart">
-                    <Button  className="d-block animated fadeIn" variant="primary" >  Terminar compra  </Button>
-                  </Link>  
-                  <Button  className="d-block mt-2 animated fadeIn" variant="secondary" onClick={()=>setCantidad(0)}>  Reset </Button>
-                </>
-
-                : 
-                <ItemCount
-                  prod={{nombre: prod.title.substring(0, 21), stock: stock}}
-                  initial={1}
-                  onAdd={onAdd}
-                ></ItemCount>  }
-                
+                {/* {cantidad > 0 ? (
+                  <>
+                    <Link to="/cart">
+                      <Button
+                        className="d-block animated fadeIn"
+                        variant="primary"
+                      >
+                        {" "}
+                        Terminar compra{" "}
+                      </Button>
+                    </Link>
+                    <Button
+                      className="d-block mt-2 animated fadeIn"
+                      variant="secondary"
+                      onClick={() => setCantidad(0)}
+                    >
+                      {" "}
+                      Reset{" "}
+                    </Button>
+                  </>
+                ) : (
+                  <ItemCount
+                    prod={{
+                      nombre: prod.title.substring(0, 21),
+                      stock: prod.stock,
+                    }}
+                    initial={1}
+                    onAdd={onAdd}
+                  ></ItemCount>
+                )} */}
               </Card.Body>
             </Card>
+
+            <div className="mt-4">
+              {cantidad > 0 ? (
+                <>
+                  <Link to="/cart">
+                    <Button
+                      className="d-block animated fadeIn"
+                      variant="primary"
+                    >
+                      {" "}
+                      Terminar compra{" "}
+                    </Button>
+                  </Link>
+                  <Button
+                    className="d-block mt-2 animated fadeIn"
+                    variant="secondary"
+                    onClick={() => setCantidad(0)}
+                  >
+                    {" "}
+                    Reset{" "}
+                  </Button>
+                </>
+              ) : (
+                <ItemCount
+                  prod={{
+                    nombre: prod.title.substring(0, 21),
+                    stock: prod.stock,
+                  }}
+                  initial={1}
+                  onAdd={onAdd}
+                ></ItemCount>
+              )}
+            </div>
           </Col>
         </Row>
       </Container>
