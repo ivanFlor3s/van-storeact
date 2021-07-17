@@ -1,7 +1,7 @@
 import React from 'react';
 import './Cart.style.scss';
 import {CartItem} from '../CartItem'
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Button } from 'react-bootstrap';
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
@@ -30,7 +30,7 @@ export const Cart = () => {
       : 
       
       
-      <Container >
+      <Container>
         <div className="cart-list">
 
         <h3 className="header-lista">LISTA CARRITO</h3>
@@ -43,6 +43,8 @@ export const Cart = () => {
         <h1>Total: ${ cartContext.getTotal() } </h1>
 
         <button className="text-danger btn" onClick={cartContext.quitarTodo}> Borrar todo</button>
+
+        <Button className="d-block" as={Link} to="/checkoutahora" > Checkout </Button>
         
         </div>
       </Container>}
