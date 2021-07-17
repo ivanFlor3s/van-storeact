@@ -1,7 +1,19 @@
 .Item{
-    
+    max-height: 45rem;
+    min-height: 35rem;
 }
 
 .margin-card{
     margin: 3rem;
+}
+
+.card-body{
+    background: #000000;
+    color: white;
+}
+.footer-card{
+    position: absolute;
+    bottom: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

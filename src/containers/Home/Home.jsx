@@ -1,12 +1,12 @@
 import React from "react";
 import "./Home.style.scss";
-import { Button, Image } from "react-bootstrap";
+import { Image } from "react-bootstrap";
 
 export const Home = () => {
   return (
     <>
-    <div className="container-landing">
-      <div className=" animated fadeIn home-title">
+    <div className="container-landing animated fadeIn ">
+      <div className="  home-title">
       <h1>En Burguereacts</h1>
       {/* TODO random country */}
         <p>
@@ -18,7 +18,6 @@ export const Home = () => {
         src="/images/hamburguerLanding.jpeg"
         alt="landing-burguer"
         fluid
-        style={{ zIndex: "-10px" }}
       />
 
       <div>

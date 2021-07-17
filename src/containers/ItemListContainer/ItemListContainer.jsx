@@ -8,20 +8,19 @@ import { ProductContext } from "../../context/ProductsContext";
 
 
 export const ItemListContainer = () => {
-  const [productos, setProds] = useState([]);
   const {categoryId}= useParams()
 
   const productContext = useContext(ProductContext)
   
-
+  
   useEffect(() => {
-    setProds(productContext.getProductos(categoryId))
-  }, [categoryId, productos]);
+    //setProds(productContext.getProductos(categoryId))
+  }, [categoryId]);
 
   return (
   <>
-     {productos.length > 0 ?  
-     <ItemList productosList={productos} categoria={categoryId}></ItemList> 
+     {productContext.productos.length > 0 ?  
+     <ItemList productosList={productContext.productos} categoria={categoryId}></ItemList> 
      : 
     <LoaderBurguer></LoaderBurguer> }
   </>

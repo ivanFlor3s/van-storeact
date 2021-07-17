@@ -75,17 +75,11 @@ export const NavbarComponent = ({ cantidad }) => {
             <Nav.Link
               as={NavLink}
               activeClassName="active"
-              to="/category/Zapatillas"
+              to="/category/All"
             >
-              <h4>Zapatillas</h4>
+              <h4> Categorias </h4>
             </Nav.Link>
-            <Nav.Link
-              as={NavLink}
-              activeClassName="active"
-              to="/category/Autos"
-            >
-              <h4>Autos</h4>
-            </Nav.Link>
+            
           </Nav>
           <Button className="action" variant="" onClick={ toggleBox}>
             <CartWidget  cant={cantidad}></CartWidget>
