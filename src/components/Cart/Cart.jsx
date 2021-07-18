@@ -5,6 +5,7 @@ import { Container, Row } from "react-bootstrap";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
+import {CheckoutContainer} from "../../containers/CheckoutContainer"
 
 export const Cart = () => {
   const cartContext = useContext(CartContext);
@@ -27,7 +28,7 @@ export const Cart = () => {
         </Container>
       ) : (
         <Container>
-          <div className="cart-list">
+          <div className="cart-list mb-3">
             <h3 className="header-lista">Lista en carrito</h3>
             <br />
             {cartContext.shoppingList.map((element, index) => {
@@ -53,6 +54,10 @@ export const Cart = () => {
               </button>
             </div>
           </div>
+
+
+          <CheckoutContainer></CheckoutContainer>
+
         </Container>
       )}
     </>

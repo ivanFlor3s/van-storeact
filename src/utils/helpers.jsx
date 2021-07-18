@@ -23,6 +23,7 @@ export const getItemMLA = async (idItem)=> {
 //#endregion
 
 
+
 export const getFirebaseCollection = async (coleccion) => {
   const DB = getFirestore()
   const COLLECTION = DB.collection(coleccion)
@@ -31,6 +32,9 @@ export const getFirebaseCollection = async (coleccion) => {
   const RESULT = RESPONSE.docs.map( element => element.data())
   console.log("Response",RESULT)
   return RESULT
+}
 
-
+export const generarOrdenFirebase = (order) =>{
+  const DB = getFirestore()
+  return DB.collection("orders").add(order)
 }

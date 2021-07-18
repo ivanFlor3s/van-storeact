@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { createContext, useState } from "react";
+import { generarOrdenFirebase } from "../utils/helpers"
+import Swal from "sweetalert2";
 
 export const CartContext = createContext();
 
@@ -62,6 +64,31 @@ export const CartComponentContext = ({ children }) => {
     }
   };
 
+  const createOrder = async (data) => {
+    console.log('Creando order con esta data', data, shoppingList )
+    const order = {
+      buyer : data,
+      item: shoppingList,
+      total: getTotal()
+    }
+    Swal.fire({
+      title: 'Espere',
+      text: 'Guardando informacion',
+      icon: 'info',
+      allowOutsideClick: false
+    })
+    Swal.showLoading()
+    
+    const response =await generarOrdenFirebase(order)
+    
+    Swal.fire({
+      title: 'Orden creada',
+      text: 'El ID de su orden es: ' + response.id,
+      icon: 'success'
+    });
+
+  }
+
   const getTotal = () => {
     return shoppingList.map(element => element.subTotal).reduce((a,b) => a + b, 0)
   }
@@ -86,7 +113,7 @@ export const CartComponentContext = ({ children }) => {
   }, [shoppingList]);
 
   return (
-    <CartContext.Provider value={{ addItem, shoppingList, cartCounter, quitarTodo, getTotal, quitarItem }}>
+    <CartContext.Provider value={{createOrder, addItem, shoppingList, cartCounter, quitarTodo, getTotal, quitarItem }}>
       {children}
     </CartContext.Provider>
   );
