@@ -24,12 +24,12 @@ export const ItemDetail = ({ prod }) => {
 
   const onAdd = (cant) => {
     setCantidad(cant);
-    console.log(`Se agregaron ${cant} productos`);
+    //console.log(`Se agregaron ${cant} productos`);
     const shoppingItem = {
       prod,
       quantity: cant,
     };
-    console.log("shoppinItem que esta enviando CHILD ", shoppingItem);
+    //console.log("shoppinItem que esta enviando CHILD ", shoppingItem);
     cartContext.addItem(shoppingItem);
   };
 
@@ -72,36 +72,7 @@ export const ItemDetail = ({ prod }) => {
                   ut itaque soluta exercitationem
                 </p>
 
-                {/* {cantidad > 0 ? (
-                  <>
-                    <Link to="/cart">
-                      <Button
-                        className="d-block animated fadeIn"
-                        variant="primary"
-                      >
-                        {" "}
-                        Terminar compra{" "}
-                      </Button>
-                    </Link>
-                    <Button
-                      className="d-block mt-2 animated fadeIn"
-                      variant="secondary"
-                      onClick={() => setCantidad(0)}
-                    >
-                      {" "}
-                      Reset{" "}
-                    </Button>
-                  </>
-                ) : (
-                  <ItemCount
-                    prod={{
-                      nombre: prod.title.substring(0, 21),
-                      stock: prod.stock,
-                    }}
-                    initial={1}
-                    onAdd={onAdd}
-                  ></ItemCount>
-                )} */}
+                
               </Card.Body>
             </Card>
 
@@ -117,14 +88,6 @@ export const ItemDetail = ({ prod }) => {
                       Terminar compra{" "}
                     </Button>
                   </Link>
-                  <Button
-                    className="d-block mt-2 animated fadeIn"
-                    variant="secondary"
-                    onClick={() => setCantidad(0)}
-                  >
-                    {" "}
-                    Reset{" "}
-                  </Button>
                 </>
               ) : (
                 <ItemCount

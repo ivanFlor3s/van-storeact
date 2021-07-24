@@ -1,32 +1,42 @@
 import React from "react";
+import { useEffect } from "react";
 import "./Cart.style.scss";
 import { CartItem } from "../CartItem";
 import { Container, Row } from "react-bootstrap";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
-import { Link } from "react-router-dom";
-import {CheckoutContainer} from "../../containers/CheckoutContainer"
+
+import { CheckoutContainer } from "../../containers/CheckoutContainer";
+import { useHistory } from 'react-router-dom';
+
+
+import Swal from "sweetalert2"
 
 export const Cart = () => {
   const cartContext = useContext(CartContext);
+  let history = useHistory();
   console.log(cartContext.shoppingList);
+
+  useEffect(() => {
+    if (cartContext.shoppingList.length == 0){
+      Swal.fire({
+        title: 'No hay productos en el carrito',
+        imageUrl: 'https://i.gifer.com/7HQe.gif',
+        confirmButtonText: 'Volver al inicio'
+  
+      }).then( (res)=> {
+        history.push('/')
+      })  
+      
+    } 
+      
+    
+  }, [cartContext.shoppingList])
+  
+  
+
   return (
     <>
-      {cartContext.shoppingList.length == 0 ? (
-        <Container className="mt-3" style={{ textAlign: "center" }}>
-          <Row>
-            <h1>UPS... No hay nada en el carrito</h1>
-          </Row>
-          <Row>
-            <img
-              src="https://i.gifer.com/7HQe.gif"
-              className="empty-gift"
-              alt="empty-cart"
-            />
-          </Row>
-          <Link to="/">Volve al inicio para seguir comprando</Link>
-        </Container>
-      ) : (
         <Container>
           <div className="cart-list mb-3">
             <h3 className="header-lista">Lista en carrito</h3>
@@ -41,8 +51,7 @@ export const Cart = () => {
                 </div>
               );
             })}
-            <div  style={{textAlign: 'end'}}>
-
+            <div style={{ textAlign: "end" }}>
               <h1>Total: ${cartContext.getTotal()} </h1>
 
               <button
@@ -55,11 +64,9 @@ export const Cart = () => {
             </div>
           </div>
 
-
           <CheckoutContainer></CheckoutContainer>
-
         </Container>
-      )}
+      
     </>
   );
 };

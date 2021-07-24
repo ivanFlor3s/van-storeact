@@ -24,9 +24,9 @@ export const ItemListContainer = () => {
   return (
     <>
       <div className="container text-center">
-        { categorias.map( element => {
+        { categorias.map( (element, index)=> {
           return (
-            <Link to={`/category/${element}`}>
+            <Link  key = {index} to={`/category/${element}`}>
               <button className="btn btn-outline-warning m-2"> {element}</button>
             </Link>
           )

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
-export const ItemCount = ({ prod, initial, onAdd, inCartList = false }) => {
+export const ItemCount = ({ prod, initial, onAdd, inCartList = false, onChangeCant }) => {
   let [cantidad, setCantidad] = useState(initial);
 
   const agregar = () => {
@@ -15,6 +15,7 @@ export const ItemCount = ({ prod, initial, onAdd, inCartList = false }) => {
   };
 
   const onInputChange = (e) => {
+    console.log('c')
     const inputValue = e.target.value;
     if (inputValue > prod.stock) {
       setCantidad(prod.stock);
@@ -22,6 +23,10 @@ export const ItemCount = ({ prod, initial, onAdd, inCartList = false }) => {
       setCantidad(1);
     } else {
       setCantidad(inputValue);
+    }
+    if(inCartList){
+      console.log('cambio')
+      onChangeCant(inputValue)
     }
   };
   const quitar = () => {

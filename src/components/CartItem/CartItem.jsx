@@ -14,6 +14,11 @@ export const CartItem = ( {cartProduct, onQuitar} ) => {
     onQuitar(cartProduct.itemList.id)
   }
 
+  const onChangeCant = (cant) => {
+    cartProduct.quantity = cant
+    console.log('cambie quant en CartITEM',cant)
+  }
+
   return (
     <>
       <Row className="mt-2">
@@ -34,10 +39,12 @@ export const CartItem = ( {cartProduct, onQuitar} ) => {
             <Col xs={2} style={{padding: '30px 0px'}}>Cantidad:</Col>
             <Col xs={4}>
               <ItemCount
-              style={{padding: '20px 0px'}}
+                style={{padding: '20px 0px'}}
                 initial={ cartProduct.cantidad }
+                prod= {cartProduct.itemList}
+                onChangeCant = {onChangeCant}
                 inCartList={true}
-                stock = {15}
+                
               ></ItemCount>
             </Col>
           </Row>
