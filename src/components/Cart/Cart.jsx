@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import "./Cart.style.scss";
 import { CartItem } from "../CartItem";
-import { Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 
@@ -19,11 +19,17 @@ export const Cart = () => {
 
   useEffect(() => {
     if (cartContext.shoppingList.length == 0){
+     
       Swal.fire({
         title: 'No hay productos en el carrito',
         imageUrl: 'https://i.gifer.com/7HQe.gif',
-        confirmButtonText: 'Volver al inicio'
-  
+        confirmButtonText: 'Volver al inicio',
+        allowOutsideClick: false,
+        text: 'Redirigiendo al home',
+        timer:5000,
+        timerProgressBar: true,
+        
+        
       }).then( (res)=> {
         history.push('/')
       })  

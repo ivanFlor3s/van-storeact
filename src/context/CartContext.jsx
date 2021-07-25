@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { createContext, useState } from "react";
-import { generarOrdenFirebase } from "../utils/helpers"
+import { generarOrdenFirebase, validarOrdenFirebase, actualizarStockFirebase } from "../utils/helpers"
 import Swal from "sweetalert2";
 
 export const CartContext = createContext();
@@ -68,7 +68,7 @@ export const CartComponentContext = ({ children }) => {
     console.log('Creando order con esta data', data, shoppingList )
     const order = {
       buyer : data,
-      item: shoppingList,
+      items: shoppingList,
       total: getTotal()
     }
     Swal.fire({
@@ -78,14 +78,35 @@ export const CartComponentContext = ({ children }) => {
       allowOutsideClick: false
     })
     Swal.showLoading()
+    //TODO Verificar que haya stock en prdouctos db
     
-    const response =await generarOrdenFirebase(order)
+    console.log('Se valida')
+    const outOfStock = await validarOrdenFirebase(order.items)
+
+    if(outOfStock.length > 0 ){
+   
+      const sinStock = outOfStock.map( e => e.itemList.title).join(" - ")
+      Swal.fire({
+        title: 'No tenemos stock',
+        icon:'error',
+        text: 'Algunos productos elegidos carecen de stock: \n' + sinStock
+      })
+      return;
+    }
     
-    Swal.fire({
+    console.log('Se genera orden')
+    const response = await generarOrdenFirebase(order)
+    
+    await Swal.fire({
       title: 'Orden creada',
       text: 'El ID de su orden es: ' + response.id,
       icon: 'success'
     });
+
+    console.log('Actualizar stock')
+    await actualizarStockFirebase(order.items)
+    
+    //TODO Recargar productos en llamado
 
   }
 
