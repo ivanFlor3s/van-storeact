@@ -19,16 +19,12 @@ export const CartComponentContext = ({ children }) => {
   };
 
   const addItem = ({ prod, quantity }) => {
-    // console.log("Lista preview",shoppingList)
-    // console.log("Item que llega",item)
-    // console.log("indexOf",isInCart(item))
-    // console.log('criterio',isInCart(item) >= 0 )
     if (isInCart(prod) >= 0) {
       shoppingList[isInCart(prod)].cantidad += quantity;
-      // console.log('Agregue a art ya existente shopping list', shoppingList)
+      
       setShoppingList([...shoppingList]);
     } else {
-      // console.log('Agrego nuevo item')
+      
       setShoppingList([
         ...shoppingList,
         {
@@ -38,7 +34,7 @@ export const CartComponentContext = ({ children }) => {
         },
       ]);
     }
-  };
+  };  
 
 
   const quitarItem = (id) => {
@@ -78,7 +74,6 @@ export const CartComponentContext = ({ children }) => {
       allowOutsideClick: false
     })
     Swal.showLoading()
-    //TODO Verificar que haya stock en prdouctos db
     
     console.log('Se valida')
     const outOfStock = await validarOrdenFirebase(order.items)
@@ -105,8 +100,7 @@ export const CartComponentContext = ({ children }) => {
 
     console.log('Actualizar stock')
     await actualizarStockFirebase(order.items)
-    
-    //TODO Recargar productos en llamado
+
     quitarTodo()
 
   }
