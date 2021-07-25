@@ -107,6 +107,7 @@ export const CartComponentContext = ({ children }) => {
     await actualizarStockFirebase(order.items)
     
     //TODO Recargar productos en llamado
+    quitarTodo()
 
   }
 
