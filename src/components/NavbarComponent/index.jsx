@@ -17,16 +17,16 @@ import { useContext, useState, useEffect } from "react";
 const PopupList = () => {
   const cartContext = useContext(CartContext);
   return (
-    <div className="dropdown-menu-cart " style={{zIndex: '100px'}}>
+    <div className="dropdown-menu-cart " >
       <h4 className="header-menu"> Lista carrito</h4>
       {cartContext.shoppingList.length == 0 ? (
         <>
           <p>Tu carro sufre de <strong>inanicion</strong></p>
           <p>Por favor compra algo para llenarlo</p>
-          <Dropdown.Button variant="danger"  className="menu-button d-block" as={Link} to="/category/All">
+          <Button variant="danger"  className="menu-button d-block" as={Link} to="/category/All">
               
-              A categorias
-          </Dropdown.Button>
+              A categorias YA!!!
+          </Button>
         </>
       ) : (
         <>
