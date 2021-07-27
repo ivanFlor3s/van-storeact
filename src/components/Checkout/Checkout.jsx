@@ -8,8 +8,8 @@ export const Checkout = ({postInfo}) => {
 
   const [form, setForm] = useState({ email: "", name: "", phone: "" })
 
-  const [validated, setValidated] = useState(false);
-  const [valid, setValid] = useState(false)
+  const [validated] = useState(false);
+
 
   const validateMail = ()=>{
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

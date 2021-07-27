@@ -1,4 +1,3 @@
-import React from "react";
 import "./CartWidget.style.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
@@ -10,17 +9,24 @@ export const CartWidget = () => {
   const cartContext = useContext(CartContext);
   return (
     <>
-      <div className="">
-        <FontAwesomeIcon
-          icon={faShoppingCart}
-          size="2x"
-          className="text-white "
-        />
+      <div className="text-nowrap">
+        
+          <FontAwesomeIcon
+            icon={faShoppingCart}
+            size="2x"
+            className="text-white "
+          />
+        
+        
+          {cartContext.shoppingList.length != 0 ? (
+            <Badge className="badge-counter animated fadeIn" variant="light">
+              {cartContext.cartCounter}
+            </Badge>
+          ) : (
+            <div> </div>
+          )}
+        
       </div>
-     {cartContext.shoppingList.length != 0 ? <Badge className="badge-counter animated fadeIn" variant="light">
-        {cartContext.cartCounter}
-      </Badge> : <div></div> }
-      
     </>
   );
 };

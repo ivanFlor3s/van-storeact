@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 import { LoaderBurguer } from "../../shared/LoaderBurguer/LoaderBurguer";
 import { useContext, useState } from "react";
 import { ProductContext } from "../../context/ProductsContext";
-import { Button, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export const ItemListContainer = () => {

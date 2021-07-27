@@ -3,19 +3,11 @@
     border: black solid 2px;
 }
 
-
-.menu{
-    visibility: visible;
-    position: absolute;
-    padding: 10px 10px 0px 10px;
-    width: 200px;
-    right: 2.5rem;
-    top: 5rem;
-    
-    background: rgba(255, 255, 255, 0.918);
-    border: rgb(177, 177, 175) 1px solid;
-    border-radius: 15px;
+.dropdown-menu-cart {
+    padding: 5px 10px;    
 }
+
+
 
 
 .header-menu {
@@ -24,11 +16,12 @@
     padding: 3px;
 }
 
+
 ul li {
     display: flex;
     list-style-type: none;
     margin: 0px;
-    border-bottom: rgba(177, 177, 175, 0.39) 1px solid;
+    border-bottom: rgba(236, 43, 43, 0.39) 1px solid;
     
 
 }
@@ -44,6 +37,17 @@ ul{
     height: 30px;
     width: 20px;
     padding: 3px;
+    margin: 5px;
     
 }
+.li-style{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    margin: 0;
+    font-size: 1rem;
+}
 
+.menu-button{
+    margin-bottom: 0px;
+}

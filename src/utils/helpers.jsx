@@ -47,6 +47,7 @@ export const validarOrdenFirebase = async (shoppingList) => {
 
   QUERY.docs.forEach((docSnapshot)=> {
     let prodInCart = findProcucto(shoppingList, docSnapshot.data().id)
+    console.log("comparacion",docSnapshot.data().stock,prodInCart.itemList.stock )
     if (docSnapshot.data().stock < prodInCart.itemList.stock){
       outOfStock.push(prodInCart)
     }
