@@ -18,7 +18,7 @@ export const ItemListContainer = () => {
   useEffect(() => {
     setProductos(productContext.getProductosByCategory(categoryId));
     setCategorias(productContext.getCategorias())
-  }, [categoryId]);
+  }, [categoryId, productContext.productos]);
 
   return (
     <>

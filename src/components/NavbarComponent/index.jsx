@@ -23,10 +23,10 @@ const PopupList = () => {
         <>
           <p>Tu carro sufre de <strong>inanicion</strong></p>
           <p>Por favor compra algo para llenarlo</p>
-          <Button variant="danger"  className="menu-button d-block" as={Link} to="/category/All">
+          <Dropdown.Button variant="danger"  className="menu-button d-block" as={Link} to="/category/All">
               
               A categorias
-          </Button>
+          </Dropdown.Button>
         </>
       ) : (
         <>
@@ -42,7 +42,6 @@ const PopupList = () => {
           </ul>
           
             <Button variant="danger"  className="menu-button d-block" as={Link} to="/cart">
-              
               Ir al carrito
             </Button>
           
