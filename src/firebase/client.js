@@ -2,12 +2,12 @@ import firebase from "firebase/app";
 import "@firebase/firestore"
 
 const firebaseConfig = firebase.initializeApp({
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  apiKey: "AIzaSyBfB-UjMJkrsUwf7Qoj9gOhKk2MI8eXyxM",
+  authDomain: "burguereact-store.firebaseapp.com",
+  projectId: "burguereact-store",
+  storageBucket: "burguereact-store.appspot.com",
+  messagingSenderId: "1067918913192",
+  appId: "1:1067918913192:web:ef9c516de2495c24bd9c9d",
 });
 
 // Initialize Firebase
