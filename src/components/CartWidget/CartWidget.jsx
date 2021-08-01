@@ -18,7 +18,7 @@ export const CartWidget = () => {
           />
         
         
-          {cartContext.shoppingList.length != 0 ? (
+          {cartContext.shoppingList.length !== 0 ? (
             <Badge className="badge-counter animated fadeIn" variant="light">
               {cartContext.cartCounter}
             </Badge>

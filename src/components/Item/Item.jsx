@@ -2,7 +2,6 @@
 import "./Item.style.scss";
 import { Card, Button, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import {  useEffect } from "react";
 
 export const Item = ({ producto}) => {
 

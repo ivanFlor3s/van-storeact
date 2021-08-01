@@ -12,14 +12,14 @@ import { Link, NavLink } from "react-router-dom";
 import { CartWidget } from "../CartWidget";
 
 import { CartContext } from "../../context/CartContext";
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 
 const PopupList = () => {
   const cartContext = useContext(CartContext);
   return (
     <div className="dropdown-menu-cart " >
       <h4 className="header-menu"> Lista carrito</h4>
-      {cartContext.shoppingList.length == 0 ? (
+      {cartContext.shoppingList.length === 0 ? (
         <>
           <p>Tu carro sufre de <strong>inanicion</strong></p>
           <p>Por favor compra algo para llenarlo</p>
@@ -52,14 +52,7 @@ const PopupList = () => {
 };
 
 export const NavbarComponent = ({ cantidad }) => {
-  const [activeMenu, setActiveMenu] = useState(false);
-
-  const toggleBox = () => {
-    setActiveMenu(!activeMenu);
-  };
-
-  useEffect(() => {}, [activeMenu]);
-
+  
   return (
     <>
       <Navbar variant="dark" className="navbar-custom">

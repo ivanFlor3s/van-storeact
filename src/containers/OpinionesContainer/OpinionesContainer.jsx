@@ -1,7 +1,6 @@
 import React from "react";
 import "./OpinionesContainer.style.scss";
 import { useEffect } from "react";
-import { Form, FloatingLabel } from "react-bootstrap";
 import { GetObservaciones } from "../../utils/helpers";
 import { useState } from "react";
 import { Opinion } from "../../components/Opinion";
@@ -28,6 +27,7 @@ export const OpinionesContainer = ({ idProducto, prodRateSet }) => {
     
 
     traerObservaciones();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

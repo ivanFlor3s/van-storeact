@@ -1,6 +1,6 @@
 import React from "react";
 import "./Opinion.style.scss";
-import { Form, Col, Row, Image } from "react-bootstrap";
+import { Col, Row, Image } from "react-bootstrap";
 import StarRatings from "react-star-ratings";
 
 const tsToDate = (ts) => {

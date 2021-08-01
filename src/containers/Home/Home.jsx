@@ -5,6 +5,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { ProductContext } from "../../context/ProductsContext";
 import { useContext, useState } from "react";
+import {Link} from "react-router-dom"
 
 export const Home = () => {
   const productContext = useContext(ProductContext);
@@ -14,6 +15,7 @@ export const Home = () => {
   useEffect(() => {
     const TOP = productContext.productos.slice(0, 4);
     setTop([...TOP]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
@@ -39,14 +41,18 @@ export const Home = () => {
                 top.map((element, index) => {
                   return (
                     <div key={index}>
-                      <Image
-                        src={element.image}
-                        alt={element.title}
-                        fluid
-                        style={{height: '350px'}}
-                      />
                       
-                      <p className="legend">{element.title}</p>
+                        <Image
+                          src={element.image}
+                          alt={element.title}
+                          fluid
+                          style={{height: '350px'}}
+                        />
+                      
+                      <Link to={`/item/${element.id}`}>
+
+                        <p className="legend">{element.title}</p>
+                      </Link>
                     </div>
                   );
                 })

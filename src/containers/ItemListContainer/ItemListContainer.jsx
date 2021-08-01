@@ -18,6 +18,7 @@ export const ItemListContainer = () => {
   useEffect(() => {
     setProductos(productContext.getProductosByCategory(categoryId));
     setCategorias(productContext.getCategorias())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoryId, productContext.productos]);
 
   return (

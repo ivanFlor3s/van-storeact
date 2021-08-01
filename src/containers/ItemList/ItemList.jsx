@@ -1,5 +1,5 @@
 import "./ItemList.style.scss";
-import { Container, Row, Col, CardColumns } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { Item } from "../../components/Item/Item";
 
 export const ItemList = ({ productosList, categoria }) => {

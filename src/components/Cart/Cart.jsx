@@ -15,10 +15,11 @@ import Swal from "sweetalert2"
 export const Cart = () => {
   const cartContext = useContext(CartContext);
   let history = useHistory();
-  console.log(cartContext.shoppingList);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  
 
   useEffect(() => {
-    if (cartContext.shoppingList.length == 0){
+    if (cartContext.shoppingList.length === 0){
      
       Swal.fire({
         title: 'No hay productos en el carrito',
@@ -35,7 +36,7 @@ export const Cart = () => {
       })  
       
     } 
-      
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     
   }, [cartContext.shoppingList])
   

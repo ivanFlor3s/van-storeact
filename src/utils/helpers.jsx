@@ -1,6 +1,5 @@
 import { getFirestore } from "../firebase/client";
 import firebase from "firebase"
-import Swal from "sweetalert2"
 
 //#region API MELI
 const url = "https://api.mercadolibre.com/";
@@ -57,7 +56,7 @@ export const validarOrdenFirebase = async (shoppingList) => {
 }
 
 const findProcucto = ( shoppingList, idProd) => {
-  return shoppingList.find(p => p.itemList.id == idProd )
+  return shoppingList.find(p => p.itemList.id === idProd )
 }
 
 

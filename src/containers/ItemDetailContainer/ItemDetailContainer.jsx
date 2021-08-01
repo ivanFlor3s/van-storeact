@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { getItemMLA } from "../../utils/helpers";
 import "./ItemDetailContainer.style.scss";
 import { ItemDetail } from "../../components/ItemDetail";
 import { useParams } from "react-router-dom";
@@ -13,11 +12,13 @@ export const ItemDetailContainer = () => {
   const { id } = useParams();
 
   const productContext = useContext(ProductContext)
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  
   useEffect(() => {
     
 
-   setProducto(productContext.getProductoById(id))
+    setProducto(productContext.getProductoById(id))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     
   }, [id]);
 

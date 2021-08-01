@@ -39,7 +39,7 @@ export const CartComponentContext = ({ children }) => {
 
   const quitarItem = (id) => {
     var array = [...shoppingList]
-    var index = array.findIndex(element => element.itemList.id == id)
+    var index = array.findIndex(element => element.itemList.id === id)
     if (index !== -1) {
       array.splice(index, 1)
       setShoppingList([...array])
