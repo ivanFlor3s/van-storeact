@@ -61,7 +61,7 @@ export const CartComponentContext = ({ children }) => {
   };
 
   const createOrder = async (data) => {
-    console.log('Creando order con esta data', data, shoppingList )
+   
     const order = {
       buyer : data,
       items: shoppingList,
@@ -75,7 +75,7 @@ export const CartComponentContext = ({ children }) => {
     })
     Swal.showLoading()
     
-    console.log('Se valida')
+  
     const outOfStock = await validarOrdenFirebase(order.items)
 
     if(outOfStock.length > 0 ){
@@ -89,7 +89,7 @@ export const CartComponentContext = ({ children }) => {
       return;
     }
     
-    console.log('Se genera orden')
+    
     const response = await generarOrdenFirebase(order)
     
     await Swal.fire({
@@ -98,7 +98,7 @@ export const CartComponentContext = ({ children }) => {
       icon: 'success'
     });
 
-    console.log('Actualizar stock')
+    
     await actualizarStockFirebase(order.items)
 
     quitarTodo()

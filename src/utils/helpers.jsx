@@ -26,7 +26,7 @@ export const getFirebaseCollection = async (coleccion) => {
   const RESPONSE = await COLLECTION.get();
 
   const RESULT = RESPONSE.docs.map((element) => element.data());
-  console.log("Response", RESULT);
+
   return RESULT;
 };
 
@@ -46,7 +46,6 @@ export const validarOrdenFirebase = async (shoppingList) => {
 
   QUERY.docs.forEach((docSnapshot)=> {
     let prodInCart = findProcucto(shoppingList, docSnapshot.data().id)
-    console.log("comparacion",docSnapshot.data().stock,prodInCart.itemList.stock )
     if (docSnapshot.data().stock < prodInCart.itemList.stock){
       outOfStock.push(prodInCart)
     }
@@ -79,7 +78,7 @@ export const actualizarStockFirebase = async (shoppingList) => {
 // }
 
 export const AgregarObservacion = async (idDocumento, opinion) => {
-  console.log("Agregando la observacions")
+  
   const DB = getFirestore();
   const PRODREF = DB.collection("productos").doc(idDocumento).collection("observaciones").add(opinion )
 
@@ -91,7 +90,7 @@ export const GetObservaciones = async (idDoc) =>{
   const OBS = await DB.collection("productos").doc(idDoc).collection("observaciones").get();
 
   const OBSERVACIONES = OBS.docs.map( element => element.data())
-  console.log(OBSERVACIONES);
+  
   return OBSERVACIONES;
   
 }  
