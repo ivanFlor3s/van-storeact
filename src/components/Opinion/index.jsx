@@ -1,0 +1,1 @@
+export { Opinion } from './Opinion';

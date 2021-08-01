@@ -1,0 +1,1 @@
+export { OpinionesContainer } from './OpinionesContainer';

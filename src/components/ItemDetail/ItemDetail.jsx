@@ -11,16 +11,22 @@ import {
   Button,
 } from "react-bootstrap";
 import { ItemCount } from "../ItemCount";
+import { OpinionesContainer } from "../../containers/OpinionesContainer"
 import StarRatings from "react-star-ratings";
 import { useState } from "react";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+
 //https://codepen.io/ekeric13/project/editor/DkJYpA Sandbox de stars cmponents
+
+
 
 export const ItemDetail = ({ prod }) => {
   const [cantidad, setCantidad] = useState(0);
 
   const cartContext = useContext(CartContext);
+
+  const [prodRate, setProdRate] = useState(0)
 
   const onAdd = (cant) => {
     setCantidad(cant);
@@ -46,8 +52,9 @@ export const ItemDetail = ({ prod }) => {
                 <h2>{prod.title}</h2>
                 <Row>
                   <Col xs={6}>
+                 {/* <small>{prodRate}</small> */}
                     <StarRatings
-                      rating={4}
+                      rating={prodRate}
                       numberOfStars={5}
                       starRatedColor="rgb(13,110,253)"
                       starDimension="15px"
@@ -71,8 +78,6 @@ export const ItemDetail = ({ prod }) => {
                   ullam facere nisi animi quis ratione consequuntur, culpa, at
                   ut itaque soluta exercitationem
                 </p>
-
-                
               </Card.Body>
             </Card>
 
@@ -101,6 +106,9 @@ export const ItemDetail = ({ prod }) => {
               )}
             </div>
           </Col>
+        </Row>
+        <Row className="m-4">
+            <OpinionesContainer idProducto={prod.id} prodRateSet={setProdRate}></OpinionesContainer>
         </Row>
       </Container>
     </>

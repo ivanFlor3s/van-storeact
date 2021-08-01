@@ -73,3 +73,26 @@ export const actualizarStockFirebase = async (shoppingList) => {
   })
   await BATCH.commit();
 }
+
+// {
+//   observacion: "Una observacion riquisima",
+//   rate: 4.5
+// }
+
+export const AgregarObservacion = async (idDocumento, opinion) => {
+  console.log("Agregando la observacions")
+  const DB = getFirestore();
+  const PRODREF = DB.collection("productos").doc(idDocumento).collection("observaciones").add(opinion )
+
+  return PRODREF;
+}
+
+export const GetObservaciones = async (idDoc) =>{
+  const DB = getFirestore();
+  const OBS = await DB.collection("productos").doc(idDoc).collection("observaciones").get();
+
+  const OBSERVACIONES = OBS.docs.map( element => element.data())
+  console.log(OBSERVACIONES);
+  return OBSERVACIONES;
+  
+}  

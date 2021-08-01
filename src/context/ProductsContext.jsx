@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { createContext, useState } from "react";
-import { getFirebaseCollection } from "../utils/helpers";
+import { getFirebaseCollection, AgregarObservacion } from "../utils/helpers";
 
 export const ProductContext = createContext();
 
@@ -29,6 +29,8 @@ export const ProductContextComponent = ({ children }) => {
         setProductos(PRODS)
       } 
       initProductos()
+
+     
     
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -42,6 +44,7 @@ export const ProductContextComponent = ({ children }) => {
     }
     return productos.filter(element => element.categoria === category)
   }
+
 
   const getCategorias = () => {
     const categorias = productos.map(element => element.categoria)
@@ -58,7 +61,7 @@ export const ProductContextComponent = ({ children }) => {
   
 
   return (
-    <ProductContext.Provider value={{productos, getProductoById, getProductosByCategory, getCategorias}}>
+    <ProductContext.Provider value={{productos, getProductoById, getProductosByCategory, getCategorias, AgregarObservacion}}>
      {children}
     </ProductContext.Provider>
   );
