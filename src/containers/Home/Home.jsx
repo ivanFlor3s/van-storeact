@@ -13,7 +13,7 @@ export const Home = () => {
 
           <p>
             Nuestra carne esta hecha de las mas finas vacas de{" "}
-            <strong>Indonesia</strong>
+            <strong>Mataderos</strong>
           </p>
         </div>
         <Image
