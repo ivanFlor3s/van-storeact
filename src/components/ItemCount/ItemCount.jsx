@@ -15,7 +15,7 @@ export const ItemCount = ({ prod, initial, onAdd, inCartList = false, onChangeCa
   };
 
   const onInputChange = (e) => {
-    console.log('c')
+    
     const inputValue = e.target.value;
     if (inputValue > prod.stock) {
       setCantidad(prod.stock);
@@ -25,7 +25,7 @@ export const ItemCount = ({ prod, initial, onAdd, inCartList = false, onChangeCa
       setCantidad(inputValue);
     }
     if(inCartList){
-      console.log('cambio')
+     
       onChangeCant(inputValue)
     }
   };

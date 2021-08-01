@@ -11,13 +11,13 @@ export const OpinionesContainer = ({ idProducto, prodRateSet }) => {
 
   const traerObservaciones = async () => {
     let RESULTOBS = await GetObservaciones(idProducto);
-    console.log(RESULTOBS);
+    
     RESULTOBS = RESULTOBS.sort((a,b) =>  b.ts.seconds -  a.ts.seconds)
     setObservaciones([...RESULTOBS]);
     if(RESULTOBS.length > 0) {
 
       let sum = RESULTOBS.map(e => e.rate).reduce((previous, current) => current += previous);
-      console.log(sum / RESULTOBS.length)
+  
       prodRateSet(sum / RESULTOBS.length)
 
     }

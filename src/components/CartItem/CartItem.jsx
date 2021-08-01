@@ -16,7 +16,7 @@ export const CartItem = ( {cartProduct, onQuitar} ) => {
 
   const onChangeCant = (cant) => {
     cartProduct.quantity = cant
-    console.log('cambie quant en CartITEM',cant)
+    //console.log('cambie quant en CartITEM',cant)
   }
 
   return (

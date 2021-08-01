@@ -13,10 +13,10 @@ export const OpinionInput = ({idProducto, parentFunc}) => {
   const [form, setForm] = useState({ observacion: "", ts: new Date(), rate: rate })
 
   const changeRating = (newRate) => {
-    console.log('nueva rate', newRate)
+    
     setRate(newRate)
     setForm({ ...form, rate: newRate })
-    console.log('estado', rate)
+    
   }
 
   const addComment = () => {
@@ -36,7 +36,7 @@ export const OpinionInput = ({idProducto, parentFunc}) => {
       })
       Swal.showLoading()
       AgregarObservacion(idProducto, form).then(() => {
-        console.log("se agrego la obs")
+        
         Swal.fire({
           title: 'Comentario publicado',
           icon: 'success',
